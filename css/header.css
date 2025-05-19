@@ -55,17 +55,17 @@ li{
   display:flex;
   flex-direction: column;
   align-items: center;
-  gap:var(--heavy5-padding);
-  padding-block:var(--heavy5-padding);
+  gap:var(--heavy6-padding);
+  padding-block:calc(var(--heavy6-padding) * 2);
   box-shadow: 0 var(--light1-padding) var(--medium1-padding) var(--primary-dark) inset;
   perspective: 0px;
 
 }
 
 .banner-text{
-  font-size:var(--heavy1-padding);
+  font-size:var(--heavy4-padding);
   border:var(--light1-padding) solid var(--secondary-color);
-  padding:var(--medium2-padding);
+  padding:var(--heavy2-padding);
   box-shadow:0 var(--light1-padding) var(--light2-padding) var(--primary-dark);
   animation: stutter1 5s linear infinite alternate;
 }
@@ -75,6 +75,7 @@ li{
   background-color:var(--secondary-color);
   color:var(--primary-color);
   border:none;
+  font-size:var(--heavy1-padding);
   font-weight:bold;
   padding:var(--light1-padding) var(--light2-padding);
   border-radius:var(--border-radius);

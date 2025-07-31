@@ -1,0 +1,40 @@
+.main{
+  background-color: var(--secondary-color);
+  color:var(--primary-color);
+}
+
+.section{
+  padding:var(--heavy5-padding) var(--medium2-padding);
+}
+
+.section-dark{
+  background-color:var(--primary-color);
+color: var(--secondary-color);
+}
+
+.small-text-size{
+  font-size:var(--light2-padding);
+}
+
+.medium-text-size{
+  font-size:var(--medium2-padding);
+}
+
+.large-text-size{
+  font-size:var(--heavy2-padding);
+}
+
+.section-title,.section-text{
+  font-weight:bold;
+  line-height: var(--heavy3-padding);
+}
+
+.section-title{
+  font-size:var(--heavy2-padding);
+  text-align: center;
+  padding-bottom: var(--medium2-padding);
+}
+
+.website-promotion{
+  
+}

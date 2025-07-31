@@ -1,0 +1,10 @@
+.container{
+  transform-style: preserve-3d;
+}
+
+@media (max-width:400px){
+  .container{
+    width:100%;
+    overflow: hidden;
+  }
+}

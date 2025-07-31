@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/interest.css">
+</head>
+<body onload="var main=new Main();">
+    <div class="container">
+        <header class="header">
+        <nav class="nav">
+            <section class="logo">
+            <a href="../index.html">
+                <svg class="logo-svg" id="_logo_svg">
+                <text class="logo-text" x="10%" y="65%">&lt;/&gt;</text>
+                </svg>
+            </a>
+            <div name="colors" id="_bg_col" class="col-select col-btn">
+                <p class="col-select-text col-btn">BG</p>
+                <ul id="_col_opt" class="col-opt">
+                <li id="_grey_scale"><span class="col grey-scale"></span> Grey-scale</li>
+                <li id="_fountain_blue"><span class="col fountain-blue"></span> Fountain Blue</li>
+                </ul>
+            </div>
+            </section>
+            <section class="links">
+            <svg id="_ham_bar_svg" class="ham-bar-svg">
+            </svg>
+            <ul id="_link_list" class="link-list">
+                <li class="link"><a href="../index.html">HOME</a></li>
+                <li class="link">
+                <a href="./html/services/services.html">
+                    SERVICES
+                </a>
+                </li>
+                <li class="link highlight"><a>CONTACT</a></li>
+            </ul>
+            </section>
+        </nav>
+        <section class="hero">
+            <div class="banner-text">
+            <h1>_coding_with_ted_</h1>
+            </div>
+            <div class="cta">
+            <button class="cta-btn">
+                CLICK ME!
+            </button>
+            </div>
+        </section>
+        </header>
+
+        <main class="main">
+            <form>
+                <section>
+                <fieldset>
+                    <legend>
+                    Calculated Yearly Interest
+                    </legend>
+                    <div>
+                    <label>
+                        Interest Amount
+                    </label>
+                    <input 
+                        type="number"
+                        id="_calculatedInterestAmount"
+                    >
+                    </div>
+                    <div>
+                    <p>
+                        Calculated Yearly Interest = <span id="_calculatedInterestResult"></span>
+                    </p>
+                    </div>
+                    <div>
+                    <input 
+                        type="button" 
+                        value="Enter"
+                        onclick="return calculateInterest()"
+                    >
+                    </div>
+                </fieldset>
+                </section>
+                <section class="compound-interest-section">
+                <fieldset>
+                <legend>
+                Compound Interest
+                </legend>
+                    <div>
+                    <label>
+                        Initial Amount
+                    </label>
+                    <input 
+                        type="number"
+                        id="_compoundInterestInitialAmount"
+                    >
+                    </div>
+                    <div>
+                    <label>
+                        Interest Amount
+                    </label>
+                    <input 
+                        type="number"
+                        id="_compoundInterestInterestAmount"
+                    >
+                    </div>
+                    <div>
+                    <label>
+                        Number of Years
+                    </label>
+                    <input 
+                        type="number"
+                        id="_compoundInterestYears"
+                    >
+                    </div>
+                    <div>
+                    <p>
+                        Compound interest after <span
+                        id="_compoundInterestResultYears"
+                        >N</span> years = <span
+                        id="_compoundInterestResult"
+                        ></span>
+                    </p>
+                    </div>
+                    <div>
+                    <input 
+                        type="button" 
+                        value="Enter"
+                        id="_compoundInterestCalculateButton"
+                        onclick="return calculateCompoundInterest()"
+                    >
+                    </div>
+                </fieldset>
+                </section>
+                <section class="debt-after-n-months-section">
+                <fieldset>
+                    <legend>
+                    Debt After N Months
+                    </legend>
+                    <div>
+                    <label>
+                        Initial Amount
+                    </label>
+                    <input 
+                        type="number"
+                        id="_debtNMonthsInitialAmount"
+                    >
+                    </div>
+                    <div>
+                    <label>
+                        Interest Amount
+                    </label>
+                    <input 
+                        type="number"
+                        id="_debtNMonthsInterestAmount"
+                    >
+                    </div>
+                    <div>
+                    <label>
+                        Monthly Payment
+                    </label>
+                    <input 
+                        type="number"
+                        id="_debtNMonthsMonthlyPayment"
+                    >
+                    </div>
+                    <div>
+                    <label>
+                        Number of Months
+                    </label>
+                    <input 
+                        type="number"
+                        id="_debtNMonthsMonths"
+                    >
+                    </div>
+                    <div>
+                    <p>
+                    Debt after <span
+                        id="_debtNMonthsResultMonths"
+                    >N</span> months = <span
+                        id="_debtNMonthsResult"
+                    ></span>
+                    </p>
+                    </div>
+                    <div>
+                    <input 
+                        type="button" 
+                        value="Enter"
+                        onclick="return calculateDebtNMonths()"
+                    >
+                    </div>
+                </fieldset>
+                </section>
+            </form>
+        </main>
+    </div>
+    <script src="../js/interest/interestFunctions.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/interest/calculateInterest.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/interest/compoundInterest.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/interest/debtNMonths.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/utils/Enum.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/utils/SVG.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/HamBarSVG.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/BGCol.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/Main.js"></script>
+</body>
+</html>

@@ -147,7 +147,7 @@ li{
   }
   
   .banner-text{
-    font-=size:var(--heavy2-padding);
+    font-=size:var(--medium2-padding);
     animation: stutter2 5s linear infinite;
   }
 }

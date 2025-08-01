@@ -1,0 +1,14 @@
+body{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  line-height: 12px;
+  font-size:12px;
+  perspective: 0px;
+  perspective-origin: 0 0;
+}
+
+@media (max-width:400px){
+  body{
+    width:100vw;
+    display:flex;
+  }
+}

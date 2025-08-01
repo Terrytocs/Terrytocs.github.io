@@ -1,0 +1,22 @@
+:root{
+  --primary-color:#3c3c3c;
+  --primary-dark:#1e1e1e;
+  --secondary-color:#c3c3c3;
+  --secondary-light:#e1e1e1;
+  
+  --border-radius:10px;
+  
+  --transition-time:500ms;
+  
+  --light1-padding:3px;
+  --light2-padding:6px;
+  --medium1-padding:12px;
+  --medium2-padding:18px;
+  --heavy1-padding:24px;
+  --heavy2-padding:30px;
+  --heavy3-padding:36px;
+  --heavy4-padding:42px;
+  --heavy5-padding:48px;
+
+  --heavy6-padding:100px;
+}

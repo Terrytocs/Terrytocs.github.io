@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/games.css">
+</head>
+<body onload="var main=new Main();">
+    <div class="container">
+        <header class="header">
+        <nav class="nav">
+            <section class="logo">
+            <a href="../index.html">
+                <svg class="logo-svg" id="_logo_svg">
+                <text class="logo-text" x="10%" y="65%">&lt;/&gt;</text>
+                </svg>
+            </a>
+            <div name="colors" id="_bg_col" class="col-select col-btn">
+                <p class="col-select-text col-btn">BG</p>
+                <ul id="_col_opt" class="col-opt">
+                <li id="_grey_scale"><span class="col grey-scale"></span> Grey-scale</li>
+                <li id="_fountain_blue"><span class="col fountain-blue"></span> Fountain Blue</li>
+                </ul>
+            </div>
+            </section>
+            <section class="links">
+            <svg id="_ham_bar_svg" class="ham-bar-svg">
+            </svg>
+            <ul id="_link_list" class="link-list">
+                <li class="link"><a href="../index.html">HOME</a></li>
+                <li class="link">
+                <a href="./html/services/services.html">
+                    SERVICES
+                </a>
+                </li>
+                <li class="link highlight"><a>CONTACT</a></li>
+            </ul>
+            </section>
+        </nav>
+        <section class="hero">
+            <div class="banner-text">
+            <h1>_coding_with_ted_</h1>
+            </div>
+            <div class="cta">
+            <button class="cta-btn">
+                CLICK ME!
+            </button>
+            </div>
+        </section>
+        </header>
+
+        <main class="main">
+            <section class="game-info">
+                <a href="./games/boomer/boomer.html"><img class="game-img" src="./games/img/boomer.png" alt="boomer"></a>
+                <div>
+                    <a href="./games/boomer/boomer.html"><h2 class="game-title">Boomer.js (WIP)</h2></a>
+                    <p>Navigate the labrynth of doom. Can you make it to the end?</p>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="../js/utils/Enum.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/utils/SVG.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/HamBarSVG.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/BGCol.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/Main.js"></script>
+</body>
+</html>

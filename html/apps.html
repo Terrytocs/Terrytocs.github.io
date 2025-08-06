@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apps</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/interest.css">
+</head>
+<body onload="var main=new Main();">
+    <div class="container">
+        <header class="header">
+        <nav class="nav">
+            <section class="logo">
+            <a href="../index.html">
+                <svg class="logo-svg" id="_logo_svg">
+                <text class="logo-text" x="10%" y="65%">&lt;/&gt;</text>
+                </svg>
+            </a>
+            <div name="colors" id="_bg_col" class="col-select col-btn">
+                <p class="col-select-text col-btn">BG</p>
+                <ul id="_col_opt" class="col-opt">
+                <li id="_grey_scale"><span class="col grey-scale"></span> Grey-scale</li>
+                <li id="_fountain_blue"><span class="col fountain-blue"></span> Fountain Blue</li>
+                </ul>
+            </div>
+            </section>
+            <section class="links">
+            <svg id="_ham_bar_svg" class="ham-bar-svg">
+            </svg>
+            <ul id="_link_list" class="link-list">
+                <li class="link"><a href="../index.html">HOME</a></li>
+                <li class="link">
+                <a href="./html/services/services.html">
+                    SERVICES
+                </a>
+                </li>
+                <li class="link highlight"><a>CONTACT</a></li>
+            </ul>
+            </section>
+        </nav>
+        <section class="hero">
+            <div class="banner-text">
+            <h1>_coding_with_ted_</h1>
+            </div>
+        </section>
+        </header>
+
+        <main class="main">
+            <form>
+                <section class="section">
+                <fieldset class="fieldset-light">
+                    <legend>
+                    <h2 class="section-title">Calculated Yearly Interest</h2>
+                    </legend>
+                    <div>
+                    <label class="section-text medium-text-size">
+                        Interest Amount
+                    </label>
+                    <input
+                        class="primary-bg input"
+                        type="number"
+                        id="_calculatedInterestAmount"
+                    >
+                    </div>
+                    <div>
+                    <p class="section-text medium-text-size">
+                        Calculated Yearly Interest = <span id="_calculatedInterestResult"></span>
+                    </p>
+                    </div>
+                    <div class="enter-clear">
+                    <input 
+                        class="cta-btn btn-light"
+                        type="button" 
+                        value="Enter"
+                        onclick="return calculateInterest()"
+                    >
+                    <input 
+                        class="cta-btn btn-light"
+                        type="button"
+                        value="Clear"
+                        onclick="clearCalcInterest()"
+                    >
+                    </div>
+                </fieldset>
+                </section>
+                <section class="section section-dark">
+                <fieldset class="fieldset-dark">
+                <legend>
+                <h2 class="section-title">Compound Interest</h2>
+                </legend>
+                    <div>
+                    <label class="section-text medium-text-size">
+                        Initial Amount
+                    </label>
+                    <input 
+                        class="secondary-bg input"
+                        type="number"
+                        id="_compoundInterestInitialAmount"
+                    >
+                    </div>
+                    <div>
+                    <label class="section-text medium-text-size">
+                        Interest Amount
+                    </label>
+                    <input 
+                        class="secondary-bg input"
+                        type="number"
+                        id="_compoundInterestInterestAmount"
+                    >
+                    </div>
+                    <div>
+                    <label class="section-text medium-text-size">
+                        Number of Years
+                    </label>
+                    <input 
+                        class="secondary-bg input"
+                        type="number"
+                        id="_compoundInterestYears"
+                    >
+                    </div>
+                    <div>
+                    <p class="section-text medium-text-size">
+                        Compound interest after <span
+                        id="_compoundInterestResultYears"
+                        >N</span> years = <span
+                        id="_compoundInterestResult"
+                        ></span>
+                    </p>
+                    </div>
+                    <div class="enter-clear">
+                    <input 
+                        class="cta-btn"
+                        type="button" 
+                        value="Enter"
+                        id="_compoundInterestCalculateButton"
+                        onclick="return calculateCompoundInterest()"
+                    >
+                    <input 
+                        class="cta-btn"
+                        type="button"
+                        value="Clear"
+                        onclick="clearCompInerest()"
+                    >
+                    </div>
+                </fieldset>
+                </section>
+                <section class="section">
+                <fieldset class="fieldset-light">
+                    <legend>
+                    <h2 class="section-title">Debt After N Months</h2>
+                    </legend>
+                    <div>
+                    <label class="section-text medium-text-size">
+                        Initial Amount
+                    </label>
+                    <input 
+                        class="primary-bg input"
+                        type="number"
+                        id="_debtNMonthsInitialAmount"
+                    >
+                    </div>
+                    <div>
+                    <label class="section-text medium-text-size">
+                        Interest Amount
+                    </label>
+                    <input 
+                        class="primary-bg input"
+                        type="number"
+                        id="_debtNMonthsInterestAmount"
+                    >
+                    </div>
+                    <div>
+                    <label class="section-text medium-text-size">
+                        Monthly Payment
+                    </label>
+                    <input 
+                        class="primary-bg input"
+                        type="number"
+                        id="_debtNMonthsMonthlyPayment"
+                    >
+                    </div>
+                    <div>
+                    <label class="section-text medium-text-size">
+                        Number of Months
+                    </label>
+                    <input 
+                        class="primary-bg input"
+                        type="number"
+                        id="_debtNMonthsMonths"
+                    >
+                    </div>
+                    <div>
+                    <p class="section-text medium-text-size">
+                    Debt after <span
+                        id="_debtNMonthsResultMonths"
+                    >N</span> months = <span
+                        id="_debtNMonthsResult"
+                    ></span>
+                    </p>
+                    </div>
+                    <div class="enter-clear">
+                    <input 
+                        class="cta-btn btn-light"
+                        type="button" 
+                        value="Enter"
+                        onclick="return calculateDebtNMonths()"
+                    >
+                    <input 
+                        class="cta-btn btn-light"
+                        type="button"
+                        value="Clear (WIP)"
+                        onclick="clearDebtNMonths()"
+                    >
+                    </div>
+                </fieldset>
+                </section>
+            </form>
+        </main>
+    </div>
+    <script src="../js/interest/interestFunctions.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/interest/calculateInterest.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/interest/compoundInterest.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/interest/debtNMonths.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/utils/Enum.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/utils/SVG.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/HamBarSVG.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/BGCol.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/Main.js"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+fieldset{
+    padding-inline:1rem;
+    border-radius:12px;
+}
+
+.fieldset-light{
+    border:1px solid var(--primary-color);
+}
+
+.fieldset-dark{
+    border:1px solid var(--secondary-color);
+}
+
+.enter-clear{
+    display:flex;
+    gap:1rem;
+    padding-block:0.5rem 1rem;
+}
+
+.btn-light{
+    color:var(--secondary-color);
+    background-color:var(--primary-color);
+}
+
+.input{
+    padding:0.25rem 0.5rem;
+    border:none;
+    border-radius:12px;
+    margin:0;
+    font-size:1.25rem;
+    width:10rem;
+}

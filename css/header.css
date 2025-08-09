@@ -73,10 +73,10 @@
 
 .hero{
   position: relative;
-  background:
-  linear-gradient(45deg,var(--secondary-color) 5%,var(--primary-color) 5%,var(--primary-color) 95%,var(--secondary-color) 95%)
-  
-  ;
+  background:url(../img/marek-piwnicki-78oufSOElMk-unsplash.jpg) var(--primary-color);
+  background-size:cover;
+  background-blend-mode:multiply;
+  background-repeat: no-repeat;
   color:var(--secondary-color);
   display:flex;
   flex-direction: column;

@@ -1,0 +1,35 @@
+.websites{
+    background:url(../img/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.jpg) var(--primary-color);
+    color:var(--secondary-color);
+    background-size:cover;
+    background-blend-mode: multiply;
+}
+
+.videos{
+    background:url(../img/sam-mcghee-KieCLNzKoBo-unsplash.jpg) var(--primary-color);
+    color:var(--secondary-color);
+    background-size:cover;
+    background-blend-mode:multiply;
+}
+
+.games{
+    background:url(../img/jeshoots-com-eCktzGjC-iU-unsplash.jpg) var(--primary-color);
+    color:var(--secondary-color);
+    background-size:cover;
+    background-blend-mode: multiply;
+    background-position:center;
+}
+
+.apps{
+    background:url(../img/kelly-sikkema-3-Tc_5LROrM-unsplash.jpg) var(--primary-color);
+    color:var(--secondary-color);
+    background-size:cover;
+    background-blend-mode: multiply;
+}
+
+.misc{
+    background:url(../img/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg) var(--primary-color);
+    color:var(--secondary-color);
+    background-size:cover;
+    background-blend-mode: multiply;
+}

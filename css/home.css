@@ -3,6 +3,7 @@
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
+    background-position:center;
 }
 
 .videos{
@@ -10,6 +11,7 @@
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode:multiply;
+    background-position:center;
 }
 
 .games{
@@ -25,6 +27,7 @@
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
+    background-position:center;
 }
 
 .misc{
@@ -32,4 +35,5 @@
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
+    background-position:center;
 }

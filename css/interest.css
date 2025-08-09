@@ -1,6 +1,8 @@
 fieldset{
     padding-inline:1rem;
     border-radius:12px;
+    max-width:75ch;
+    margin-inline:auto;
 }
 
 .fieldset-light{
@@ -34,5 +36,10 @@ fieldset{
 
 .interest-grid{
     display:grid;
-    grid-template-columns: 12rem auto;
+    grid-template-columns:12rem auto;
+}
+
+.interest-label{
+  font-weight:bold;
+  line-height: var(--heavy3-padding);
 }

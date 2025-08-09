@@ -76,6 +76,7 @@
   background:url(../img/marek-piwnicki-78oufSOElMk-unsplash.jpg) var(--primary-color);
   background-size:cover;
   background-blend-mode:multiply;
+  background-position:center;
   background-repeat: no-repeat;
   color:var(--secondary-color);
   display:flex;

@@ -1,6 +1,12 @@
+.games{
+    display:flex;
+    justify-content:center;
+}
+
 .game-info{
     display:flex;
     gap:1rem;
+    max-width:100ch;
 }
 
 .game-title{

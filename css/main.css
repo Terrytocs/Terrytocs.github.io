@@ -29,12 +29,13 @@ color: var(--secondary-color);
   line-height: var(--heavy3-padding);
 }
 
+.section-text{
+  margin-inline:auto;
+  max-width:75ch;
+}
+
 .section-title{
   font-size:var(--heavy2-padding);
   text-align: center;
   padding-bottom: var(--medium2-padding);
-}
-
-.website-promotion{
-  
 }

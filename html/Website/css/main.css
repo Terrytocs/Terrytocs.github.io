@@ -1,0 +1,61 @@
+main{
+  --padding:5rem 1rem 5rem;
+  
+  line-height: 1.5rem;
+  
+  
+  min-width:600px;
+}
+
+main article{
+  background-color:var(--background-color2);
+  color:var(--primary-color);
+  padding: var(--padding);
+}
+main article h2{
+  text-align: center;
+  padding-bottom:5rem;
+}
+main .reasons{
+  background-color: #0003;
+  padding: 1rem 0.5rem 3rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 5px 3px #000c;
+  max-width:125ch;
+  margin-inline:auto;
+}
+main .benefits{
+  margin-left:1rem;
+  
+}
+main .benefits li{
+  margin-top:1rem;
+}
+main .ico{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width:3rem;
+  aspect-ratio:1/1;
+  border-radius:100%;
+  margin-right: 0.5rem;
+  background-color: black;
+}
+main .cta{
+  display:grid;
+  place-items: center;
+  padding-block: 5rem;
+  background-color: lightblue;
+}
+main .cta button{
+  padding:0.5rem 1rem;
+  border-radius:9999rem;
+  color:var(--primary-color);
+  background-color: var(--background-color);
+  border:3px solid var(--primary-color);
+}
+main .final{
+  padding:5rem 1rem;
+  background-color: var(--background-color2);
+  color: var(--primary-color);
+}

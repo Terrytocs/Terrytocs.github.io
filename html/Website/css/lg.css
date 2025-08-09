@@ -1,0 +1,13 @@
+:root{
+  
+  --primary-color: whitesmoke;
+  --accent-color:HSL(60, 80%, 50%);
+  --background-color:rgb(20,28,30);
+  --background-color2: rgb(40,48,50);
+}
+.logo-sm,.ham-svg{
+  display: none;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+}

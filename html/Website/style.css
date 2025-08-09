@@ -1,0 +1,10 @@
+@import "./css/reset.css";
+@import "./css/lg.css";
+@import "./css/header.css";
+@import "./css/main.css";
+@import "./css/footer.css";
+
+@import "./css/sm.css";
+@import "./css/headersm.css";
+@import "./css/mainsm.css";
+@import "./css/footersm.css";

@@ -81,6 +81,10 @@ header .get-started{
   border:3px solid var(--primary-color);
 }
 
+header .get-started:hover{
+  border:3px solid var(--accent-color);
+}
+
 .bg-vid{
   position:absolute;
   top: 50%;

@@ -3,7 +3,11 @@
 import {PlayerEnums} from "./Enum.js";
 import Idle from "./PlayerStateMethods/Idle.js";
 import MoveForward from "./PlayerStateMethods/MoveForward.js";
+import MoveForwardLeft from "./PlayerStateMethods/MoveForwardLeft.js";
+import MoveForwardRight from "./PlayerStateMethods/MoveForwardRight.js";
 import MoveBackward from "./PlayerStateMethods/MoveBackward.js";
+import MoveBackwardLeft from "./PlayerStateMethods/MoveBackwardLeft.js";
+import MoveBackwardRight from "./PlayerStateMethods/MoveBackwardRight.js";
 import MoveLeft from "./PlayerStateMethods/MoveLeft.js";
 import MoveRight from "./PlayerStateMethods/MoveRight.js";
 import Crouch from "./PlayerStateMethods/Crouch.js";
@@ -17,7 +21,7 @@ import Fall from "./PlayerStateMethods/Fall.js";
 
 export default class PlayerStateMachine {
     constructor(player) {
-      Object.assign(this, Idle.methods, MoveForward.methods, MoveBackward.methods, MoveLeft.methods, MoveRight.methods, Crouch.methods, Jump.methods, Attack.methods, WeaponSwitch.methods, PowerSlide.methods, Aim.methods, Sprint.methods, Fall.methods); // Assign methods from all state classes
+      Object.assign(this, Idle.methods, MoveForward.methods, MoveForwardLeft.methods, MoveForwardRight.methods, MoveBackward.methods,MoveBackwardLeft.methods,MoveBackwardRight.methods, MoveLeft.methods, MoveRight.methods, Crouch.methods, Jump.methods, Attack.methods, WeaponSwitch.methods, PowerSlide.methods, Aim.methods, Sprint.methods, Fall.methods); // Assign methods from all state classes
         this.player = player;
         this.currentState = PlayerEnums.PlayerStates.IDLE;
         
@@ -26,19 +30,43 @@ export default class PlayerStateMachine {
             init: this.idleInit,
             update: this.idleUpdate,
             teardown: this.idleTeardown,
-            transitions:[PlayerEnums.PlayerStates.MOVE_FORWARD, PlayerEnums.PlayerStates.MOVE_BACKWARD, PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING, PlayerEnums.PlayerStates.SPRINTING], // Possible transitions from this state
+            transitions:[PlayerEnums.PlayerStates.MOVE_FORWARD,PlayerEnums.PlayerStates.MOVE_FORWARD_LEFT,PlayerEnums.PlayerStates.MOVE_FORWARD_RIGHT, PlayerEnums.PlayerStates.MOVE_BACKWARD,PlayerEnums.PlayerStates.MOVE_BACKWARD_LEFT,PlayerEnums.PlayerStates.MOVE_BACKWARD_RIGHT, PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING, PlayerEnums.PlayerStates.SPRINTING], // Possible transitions from this state
           },
           [PlayerEnums.PlayerStates.MOVE_FORWARD]: {
             init: this.moveForwardInit,
             update: this.moveForwardUpdate,
             teardown: this.moveForwardTeardown,
-            transitions: [PlayerEnums.PlayerStates.IDLE, PlayerEnums.PlayerStates.MOVE_FORWARD,PlayerEnums.PlayerStates.MOVE_BACKWARD, PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING], // Possible transitions from this state
+            transitions: [PlayerEnums.PlayerStates.IDLE, PlayerEnums.PlayerStates.MOVE_FORWARD,PlayerEnums.PlayerStates.MOVE_FORWARD_LEFT,PlayerEnums.PlayerStates.MOVE_FORWARD_RIGHT,PlayerEnums.PlayerStates.MOVE_BACKWARD, PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING], // Possible transitions from this state
+          },
+          [PlayerEnums.PlayerStates.MOVE_FORWARD_LEFT]: {
+            init: this.moveForwardLeftInit,
+            update: this.moveForwardLeftUpdate,
+            teardown: this.moveForwardLeftTeardown,
+            transitions: [PlayerEnums.PlayerStates.IDLE, PlayerEnums.PlayerStates.MOVE_FORWARD,PlayerEnums.PlayerStates.MOVE_FORWARD_LEFT,PlayerEnums.PlayerStates.MOVE_BACKWARD, PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING], // Possible transitions from this state
+          },
+          [PlayerEnums.PlayerStates.MOVE_FORWARD_RIGHT]: {
+            init: this.moveForwardRightInit,
+            update: this.moveForwardRightUpdate,
+            teardown: this.moveForwardRightTeardown,
+            transitions: [PlayerEnums.PlayerStates.IDLE, PlayerEnums.PlayerStates.MOVE_FORWARD,PlayerEnums.PlayerStates.MOVE_FORWARD_RIGHT,PlayerEnums.PlayerStates.MOVE_BACKWARD, PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING], // Possible transitions from this state
           },
           [PlayerEnums.PlayerStates.MOVE_BACKWARD]: {
             init: this.moveBackwardInit,
             update: this.moveBackwardUpdate,
             teardown: this.moveBackwardTeardown,
-            transitions: [PlayerEnums.PlayerStates.IDLE, PlayerEnums.PlayerStates.MOVE_FORWARD, PlayerEnums.PlayerStates.MOVE_BACKWARD,PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING], // Possible transitions from this state
+            transitions: [PlayerEnums.PlayerStates.IDLE, PlayerEnums.PlayerStates.MOVE_FORWARD, PlayerEnums.PlayerStates.MOVE_BACKWARD,PlayerEnums.PlayerStates.MOVE_BACKWARD_LEFT,PlayerEnums.PlayerStates.MOVE_BACKWARD_RIGHT,PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING], // Possible transitions from this state
+          },
+          [PlayerEnums.PlayerStates.MOVE_BACKWARD_LEFT]: {
+            init: this.moveBackwardLeftInit,
+            update: this.moveBackwardLeftUpdate,
+            teardown: this.moveBackwardLeftTeardown,
+            transitions: [PlayerEnums.PlayerStates.IDLE, PlayerEnums.PlayerStates.MOVE_FORWARD, PlayerEnums.PlayerStates.MOVE_BACKWARD,PlayerEnums.PlayerStates.MOVE_BACKWARD_LEFT,PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING], // Possible transitions from this state
+          },
+          [PlayerEnums.PlayerStates.MOVE_BACKWARD_RIGHT]: {
+            init: this.moveBackwardRightInit,
+            update: this.moveBackwardRightUpdate,
+            teardown: this.moveBackwardRightTeardown,
+            transitions: [PlayerEnums.PlayerStates.IDLE, PlayerEnums.PlayerStates.MOVE_FORWARD, PlayerEnums.PlayerStates.MOVE_BACKWARD,PlayerEnums.PlayerStates.MOVE_BACKWARD_RIGHT,PlayerEnums.PlayerStates.MOVE_LEFT, PlayerEnums.PlayerStates.MOVE_RIGHT, PlayerEnums.PlayerStates.CROUCHING, PlayerEnums.PlayerStates.JUMPING, PlayerEnums.PlayerStates.ATTACKING], // Possible transitions from this state
           },
           [PlayerEnums.PlayerStates.MOVE_LEFT]: {
             init: this.moveLeftInit,

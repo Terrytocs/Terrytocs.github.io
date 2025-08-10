@@ -16,8 +16,8 @@ export default class MoveForward {
     // Move Forward
     static moveForwardInit(player) {
         player.vel.set(
-            Math.cos(player.dir.x) * player.speed*1.5,
-            Math.sin(player.dir.x) * player.speed*1.5,
+            Math.cos(player.dir.x) * player.speed,
+            Math.sin(player.dir.x) * player.speed,
             0
         );
         player.enableHeadBob = true;

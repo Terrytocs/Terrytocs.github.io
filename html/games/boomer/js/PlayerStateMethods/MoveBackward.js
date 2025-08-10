@@ -16,8 +16,8 @@ export default class MoveBackward {
     // Move Backward
     static moveBackwardInit(player) {
         player.vel.set(
-            -Math.cos(player.dir.x) * player.speed*1.3,
-            -Math.sin(player.dir.x) * player.speed*1.3,
+            -Math.cos(player.dir.x) * player.speed,
+            -Math.sin(player.dir.x) * player.speed,
             0
         );
         player.enableHeadBob = true;

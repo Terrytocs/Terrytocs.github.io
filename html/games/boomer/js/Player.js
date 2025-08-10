@@ -5,6 +5,7 @@ import {PlayerEnums, PlayerWeapons} from "./Enum.js";
 import PlayerStateMachine from "./PlayerStateMachine.js";
 import PlayerAnimations from "./PlayerAnimations.js";
 import Textures from "./Textures.js";
+import Utils from "./Utils.js";
 
 export default class Player extends Entity {
     constructor(pos,config = {}) {
@@ -13,7 +14,7 @@ export default class Player extends Entity {
         this.stateMachine=new PlayerStateMachine(this); // Initialize the state machine for the player
     }
   
-    update(deltaTime) {
+    update(deltaTime,keys,mouse) {
         this.stateMachine.update(deltaTime); // Update the player's state machine
         this.currentWeapon=this.weapons[this.loadout[this.weaponIndex]];
         this.currentWeaponSprite=Textures.textures.types.sprites.player[this.currentWeapon.name];
@@ -28,16 +29,24 @@ export default class Player extends Entity {
                 this.animationFrame=0;
             }
         }
-
-        if(this.keys["w"]){
+        
+        if(keys["w"]&&keys["a"]){
+            this.stateMachine.setState(PlayerEnums.PlayerStates.MOVE_FORWARD_LEFT);
+        }else if(keys["w"]&&keys["d"]){
+            this.stateMachine.setState(PlayerEnums.PlayerStates.MOVE_FORWARD_RIGHT);
+        }else if(keys["w"]){
             this.stateMachine.setState(PlayerEnums.PlayerStates.MOVE_FORWARD);
-        }else if(this.keys["s"]){
+        }else if(keys["s"]&&keys["a"]){
+            this.stateMachine.setState(PlayerEnums.PlayerStates.MOVE_BACKWARD_LEFT);
+        }else if(keys["s"]&&keys["d"]){
+            this.stateMachine.setState(PlayerEnums.PlayerStates.MOVE_BACKWARD_RIGHT);
+        }else if(keys["s"]){
             this.stateMachine.setState(PlayerEnums.PlayerStates.MOVE_BACKWARD);
-        }else if(this.keys["a"]){
+        }else if(keys["a"]){
             this.stateMachine.setState(PlayerEnums.PlayerStates.MOVE_LEFT);
-        }else if(this.keys["d"]){
+        }else if(keys["d"]){
             this.stateMachine.setState(PlayerEnums.PlayerStates.MOVE_RIGHT);
-        }else if(this.keys[" "]&&this.grounded){
+        }else if(keys[" "]&&this.grounded){
             this.stateMachine.setState(PlayerEnums.PlayerStates.JUMPING);
         }else{
             if(this.stateMachine.currentState==="attacking"){

@@ -11,12 +11,12 @@ export default class PlayerAnimations{
             ["pistol-idle-2",[[0,0,242,357],[144,235,144,240],60]],
 
             //MOVING
-            ["pistol-move-1",[[0,0,72,120],[144,239,144,240],10]],
-            ["pistol-move-2",[[0,0,72,120],[145,235,144,240],10]],
-            ["pistol-move-3",[[0,0,72,120],[150,235,144,240],10]],
-            ["pistol-move-4",[[0,0,72,120],[155,239,144,240],10]],
-            ["pistol-move-5",[[0,0,72,120],[150,235,144,240],10]],
-            ["pistol-move-6",[[0,0,72,120],[145,235,144,240],10]],
+            ["pistol-move-1",[[0,0,242,357],[144,239,144,240],10]],
+            ["pistol-move-2",[[0,0,242,357],[145,235,144,240],10]],
+            ["pistol-move-3",[[0,0,242,357],[150,235,144,240],10]],
+            ["pistol-move-4",[[0,0,242,357],[155,239,144,240],10]],
+            ["pistol-move-5",[[0,0,242,357],[150,235,144,240],10]],
+            ["pistol-move-6",[[0,0,242,357],[145,235,144,240],10]],
 
             //Reload
             ["pistol-reload-1",[[0,0,72,120],[145,235,144,240],10]],
@@ -62,7 +62,11 @@ export default class PlayerAnimations{
 
                 //MOVING
                 [PlayerEnums.PlayerStates.MOVE_FORWARD]:["pistol-move-1","pistol-move-2","pistol-move-3","pistol-move-4","pistol-move-5","pistol-move-6"],
+                [PlayerEnums.PlayerStates.MOVE_FORWARD_LEFT]:["pistol-move-1","pistol-move-2","pistol-move-3","pistol-move-4","pistol-move-5","pistol-move-6"],
+                [PlayerEnums.PlayerStates.MOVE_FORWARD_RIGHT]:["pistol-move-1","pistol-move-2","pistol-move-3","pistol-move-4","pistol-move-5","pistol-move-6"],
                 [PlayerEnums.PlayerStates.MOVE_BACKWARD]:["pistol-move-1","pistol-move-2","pistol-move-3","pistol-move-4","pistol-move-5","pistol-move-6"],
+                [PlayerEnums.PlayerStates.MOVE_BACKWARD_LEFT]:["pistol-move-1","pistol-move-2","pistol-move-3","pistol-move-4","pistol-move-5","pistol-move-6"],
+                [PlayerEnums.PlayerStates.MOVE_BACKWARD_RIGHT]:["pistol-move-1","pistol-move-2","pistol-move-3","pistol-move-4","pistol-move-5","pistol-move-6"],
                 [PlayerEnums.PlayerStates.MOVE_LEFT]:["pistol-move-1","pistol-move-2","pistol-move-3","pistol-move-4","pistol-move-5","pistol-move-6"],
                 [PlayerEnums.PlayerStates.MOVE_RIGHT]:["pistol-move-1","pistol-move-2","pistol-move-3","pistol-move-4","pistol-move-5","pistol-move-6"],
 

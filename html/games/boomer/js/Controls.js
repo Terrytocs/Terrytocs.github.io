@@ -24,8 +24,9 @@ export default class Controls{
         
     }
     handleMouseMove(event) {
-        if (event.movementX || event.movementY) {
-             this.game.mouse.pos=Utils.getPos(event,this.game.canvas);
+        this.game.mouse.pos=Utils.getPos(event,this.game.canvas);
+        if(!this.game.paused){
+            this.game.player.dir.x+=event.movementX*0.01;
         }
     }
     handleMouseDown(event) {

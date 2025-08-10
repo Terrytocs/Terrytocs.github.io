@@ -16,8 +16,8 @@ export default class MoveLeft {
     // Move Left
     static moveLeftInit(player) {
         player.vel.set(
-            -Math.cos(player.dir.x+(Math.PI/2)) * player.speed*0.5,
-            -Math.sin(player.dir.x+(Math.PI/2)) * player.speed*0.5,
+            -Math.cos(player.dir.x+(Math.PI/2)) * player.speed,
+            -Math.sin(player.dir.x+(Math.PI/2)) * player.speed,
             0
         );
         player.enableHeadBob = true;

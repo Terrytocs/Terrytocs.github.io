@@ -24,12 +24,13 @@ export default class Game{
             right_click:false
         };
         this.keys={};
+        this.paused=false;
 
         this.init();
         
         this.update((deltaTime)=>{
             this.entities.forEach((entity)=>{
-                entity.update(deltaTime);
+                entity.update(deltaTime,this.keys);
             });
         });
         this.draw((ctx)=>{

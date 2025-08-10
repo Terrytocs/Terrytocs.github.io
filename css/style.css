@@ -6,3 +6,29 @@
 @import "colors.css";
 @import "main.css";
 @import "footer.css";
+
+.underline{
+  background:linear-gradient(var(--primary-color));
+  background-size:0% 2px;
+  background-position:bottom center;
+  background-repeat:no-repeat;
+  transition:300ms ease-in-out;
+  padding-block:1px;
+}
+
+.underline:hover{
+  background-size:100% 2px;
+}
+
+.underline-alt{
+  background:linear-gradient(var(--secondary-color));
+  background-size:0% 2px;
+  background-position:bottom center;
+  background-repeat:no-repeat;
+  transition:200ms ease-in-out;
+  padding-block:1px;
+}
+
+.underline-alt:hover{
+  background-size:100% 2px;
+}

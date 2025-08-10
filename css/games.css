@@ -12,6 +12,8 @@
 .game-title{
     font-size:1.75rem;
     margin-block:0.5rem 1rem;
+    width:fit-content;
+    height:1rem;
 }
 
 .game-img{

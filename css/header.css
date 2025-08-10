@@ -71,6 +71,10 @@
   box-shadow: 0 3px 4px var(--primary-dark);
 }
 
+.highlight:hover{
+  text-decoration:underline;
+}
+
 .hero{
   position: relative;
   background:url(../img/marek-piwnicki-78oufSOElMk-unsplash.jpg) var(--primary-color);

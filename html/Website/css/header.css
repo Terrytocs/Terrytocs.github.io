@@ -79,6 +79,7 @@ header .get-started{
   padding: 0.5rem 1rem;
   border-radius: 9999rem;
   border:3px solid var(--primary-color);
+  cursor:pointer;
 }
 
 header .get-started:hover{

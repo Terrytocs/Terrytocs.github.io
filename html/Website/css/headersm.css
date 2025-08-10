@@ -46,10 +46,10 @@ header .logo-sm h3{
   transition:var(--transition);
 }
 
-.ham-svg rect:nth-of-type(1){
+/*.ham-svg rect:nth-of-type(1){
   /*transform: translate(10%,0%);
- /* transform-origin: bottom left;*/
-}
+ /* transform-origin: bottom left;
+}*/
 .ham-svg rect:nth-of-type(2){
   transform: translateY(40%);
 }
@@ -133,6 +133,7 @@ header .get-started{
   padding: 0.5rem 1rem;
   border-radius: 9999rem;
   border:3px solid var(--primary-color);
+  cursor:pointer;
 }
 
 header .get-started:hover{

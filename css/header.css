@@ -144,7 +144,7 @@
   }
 }
 
-@media (max-width:400px){
+@media (max-width:500px){
   .link-list{
     position: absolute;
     flex-direction: column;
@@ -178,7 +178,7 @@
   }
   
   .banner-text{
-    font-size:var(--medium2-padding);
+    font-size:var(--heavy1-padding);
     animation: stutter2 5s linear infinite;
   }
 }

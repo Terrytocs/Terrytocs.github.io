@@ -14,8 +14,7 @@ class Main{
         this.mapCanvas.height=this.canvas.height;
         this.game=new Game(this);
         this.game.init();
-        const aud=document.getElementById("_aud");
-        aud.volume=0.2;
+        
         this.canvas.addEventListener("click",()=>{
             if(this.canvas.requestFullscreen){
                 this.canvas.requestFullscreen();

@@ -36,11 +36,9 @@ export default class Game{
         this.draw((ctx)=>{
             const rays=Utils.getRays(this.player, this.ctx.canvas.width);
             this.sceneRender.render(rays, this.player); // Render the scene with rays and player
-            this.sceneRender.miniMapRender(rays); // Render minimap
+            //this.sceneRender.miniMapRender(rays); // Render minimap
         });
         this.engine.start();
-
-        
     }
     update(f){
         this.engine.update((deltaTime)=>{

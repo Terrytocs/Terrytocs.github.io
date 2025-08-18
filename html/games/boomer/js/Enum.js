@@ -20,7 +20,7 @@ export class Enums{
         stamina: 100,
         maxStamina: 100,
         currentWeaponIndex: 0,
-        speed:1,
+        speed:0.5,
         sprintSpeed: 1,
         weaponFrame: 0,
         FOV:60,

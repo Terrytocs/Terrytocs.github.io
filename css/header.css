@@ -49,6 +49,7 @@
 
 .ham-bar-svg{
   display:none;
+  cursor:pointer;
 }
 
 .link-list{

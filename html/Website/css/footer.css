@@ -1,26 +1,13 @@
 footer{
-  min-width:600px;
   padding-block:3rem;
   background-color: var(--background-color);
-  color:var(--primary-color);
+  color:var(--secondary-color);
 }
 footer h3{
   text-align: center;
   margin-bottom:2rem;
+  font-size:2rem;
 }
 footer .contact{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap:1rem;
-}
-
-footer .ico{
-  justify-content: center;
-  align-items: center;
-  width:1.5rem;
-  aspect-ratio:1/1;
-  border-radius:100%;
-  margin-right: 0.5rem;
-  background-color: black;
+  padding-inline:1rem;
 }

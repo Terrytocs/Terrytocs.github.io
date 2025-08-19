@@ -2,19 +2,23 @@ main{
   --padding:5rem 1rem 5rem;
   
   line-height: 1.5rem;
-  
-  
   min-width:600px;
 }
 
-main article{
+main .article{
   background-color:var(--background-color2);
   color:var(--primary-color);
   padding: var(--padding);
 }
+main .article2{
+  background-color:var(--background-color2);
+  color:var(--primary-color);
+  padding: var(--padding);
+  padding-top:0;
+}
 main article h2{
   text-align: center;
-  padding-bottom:5rem;
+  padding-block:3rem 4rem;
 }
 main .reasons{
   background-color: #0003;
@@ -25,21 +29,33 @@ main .reasons{
   margin-inline:auto;
 }
 main .benefits{
-  margin-left:1rem;
-  
+  margin-inline:1rem;
+}
+main .benefits.bubble li{
+  background-color: #0004;
+  padding:1rem;
+  border-radius: 1rem;;
 }
 main .benefits li{
   margin-top:1rem;
 }
-main .ico{
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width:3rem;
-  aspect-ratio:1/1;
-  border-radius:100%;
-  margin-right: 0.5rem;
-  background-color: black;
+main .intro{
+  padding:1rem;
+}
+main .outro{
+  margin-top:2rem;
+  padding:1rem;
+}
+main .process>li{
+  margin-top:1rem;
+  background-color: #fff1;
+  padding:1rem;
+}
+main .list{
+  margin-top:2rem;
+}
+main .list li{
+  list-style-type:disc;
 }
 main .cta{
   display:grid;
@@ -48,14 +64,25 @@ main .cta{
   background-color: lightblue;
 }
 main .cta button{
-  padding:0.5rem 1rem;
+  padding:1rem 1.5rem;
   border-radius:9999rem;
   color:var(--primary-color);
   background-color: var(--background-color);
   border:3px solid var(--primary-color);
+}
+main .cta button:hover{
+  color:var(--accent-color);
+  border:3px solid var(--accent-color);
 }
 main .final{
   padding:5rem 1rem;
   background-color: var(--background-color2);
   color: var(--primary-color);
 }
+main .final a:hover{
+  text-decoration:underline;
+}
+main .final p{
+  padding:1rem;
+}
+

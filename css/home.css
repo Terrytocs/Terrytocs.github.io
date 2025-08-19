@@ -1,5 +1,5 @@
 .websites{
-    background:url(../img/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.jpg) var(--primary-color);
+    background:url(../img/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.jpg) #3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
@@ -7,7 +7,7 @@
 }
 
 .videos{
-    background:url(../img/sam-mcghee-KieCLNzKoBo-unsplash.jpg) var(--primary-color);
+    background:url(../img/sam-mcghee-KieCLNzKoBo-unsplash.jpg) #3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode:multiply;
@@ -15,7 +15,7 @@
 }
 
 .games{
-    background:url(../img/jeshoots-com-eCktzGjC-iU-unsplash.jpg) var(--primary-color);
+    background:url(../img/jeshoots-com-eCktzGjC-iU-unsplash.jpg) #3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
@@ -23,7 +23,7 @@
 }
 
 .apps{
-    background:url(../img/kelly-sikkema-3-Tc_5LROrM-unsplash.jpg) var(--primary-color);
+    background:url(../img/kelly-sikkema-3-Tc_5LROrM-unsplash.jpg) #3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
@@ -31,7 +31,7 @@
 }
 
 .misc{
-    background:url(../img/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg) var(--primary-color);
+    background:url(../img/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg) #3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;

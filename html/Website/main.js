@@ -104,18 +104,24 @@ function bgVidFn(){
   w=Number(width.slice(0,width.indexOf("p"))),h=Number(height.slice(0,height.indexOf("p")));
   canvas.width=w;
   canvas.height=h;
+
+  const arcs=[];
+  for(let i=0;i<100;++i){
+    arcs.push(new Arc(w*Math.random(),h*Math.random(),2,"rgb(20,28,30"));
+  }
+
   window.addEventListener("resize",()=>{
     width=window.getComputedStyle(hero).getPropertyValue("width"),
     height=window.getComputedStyle(hero).getPropertyValue("height"),
     w=Number(width.slice(0,width.indexOf("p"))),h=Number(height.slice(0,height.indexOf("p")));
     canvas.width=w;
     canvas.height=h;
-  });
 
-  const arcs=[];
-  for(let i=0;i<100;++i){
-    arcs.push(new Arc(w*Math.random(),h*Math.random(),2,"rgb(20,28,30"));
-  }
+    arcs.forEach(arc=>{
+      arc.x=w*Math.random();
+      arc.y=h*Math.random();
+    });
+  });
 
   const engine=new Engine();
   engine.update((t)=>{

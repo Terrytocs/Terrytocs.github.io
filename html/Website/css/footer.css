@@ -1,5 +1,5 @@
 footer{
-  padding-block:3rem;
+  padding-block:3rem 10rem;
   background-color: var(--background-color);
   color:var(--secondary-color);
 }
@@ -9,5 +9,5 @@ footer h3{
   font-size:2rem;
 }
 footer .contact{
-  padding-inline:1rem;
+  padding-inline:2rem;
 }

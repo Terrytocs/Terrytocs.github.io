@@ -34,7 +34,21 @@ main .benefits{
 main .benefits.bubble li{
   background-color: #0004;
   padding:1rem;
-  border-radius: 1rem;;
+  border-radius: 1rem;
+  transition:250ms linear;
+}
+main .benefits.bubble strong{
+  background: linear-gradient(var(--primary-color));
+  background-repeat:no-repeat;
+  background-position:bottom center;
+  background-size:0% 2px;
+  transition:250ms linear;
+}
+main .benefits.bubble li:hover strong{
+  background-size:100% 2px;
+}
+main .benefits.bubble li:hover{
+  transform:scale(1.01);
 }
 main .benefits li{
   margin-top:1rem;
@@ -50,6 +64,20 @@ main .process>li{
   margin-top:1rem;
   background-color: #fff1;
   padding:1rem;
+  transition:250ms linear;
+}
+main .process>li:hover{
+  transform:scale(1.01);
+}
+main .process strong{
+  background:linear-gradient(var(--primary-color));
+  background-repeat:no-repeat;
+  background-position:bottom center;
+  background-size:0 2px;
+  transition:250ms linear;
+}
+main .process>li:hover strong{
+  background-size:100% 2px;
 }
 main .list{
   margin-top:2rem;
@@ -69,18 +97,29 @@ main .cta button{
   color:var(--primary-color);
   background-color: var(--background-color);
   border:3px solid var(--primary-color);
+  transition:250ms linear;
+  cursor:pointer;
 }
 main .cta button:hover{
   color:var(--accent-color);
   border:3px solid var(--accent-color);
+  transform:scale(1.025);
 }
 main .final{
   padding:5rem 1rem;
   background-color: var(--background-color2);
   color: var(--primary-color);
 }
+main .final a{
+  background:linear-gradient(var(--primary-color));
+  background-repeat:no-repeat;
+  background-position: bottom center;
+  background-size:0% 2px;
+  transition:250ms linear;
+}
 main .final a:hover{
-  text-decoration:underline;
+  background-size:100% 2px;
+  color:var(--accent-color);
 }
 main .final p{
   padding:1rem;

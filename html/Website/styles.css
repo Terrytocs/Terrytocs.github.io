@@ -265,7 +265,7 @@ body {
   z-index: 1;
   text-decoration: none;
   box-shadow: var(--shadow-cta);
-  transition: 250ms ease;
+  transition: 300ms ease;
 }
 
 .hero .btn:hover {

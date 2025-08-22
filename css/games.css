@@ -1,38 +1,21 @@
-.game-info{
-    display: grid;
-    place-content: center;
-}
-
-.grid-section{
+.game-section{
     display:flex;
     gap:1rem;
-    width:95ch;
-}
-
-.game-title{
-    font-size:1.75rem;
-    margin-block:0.5rem 1rem;
-    width:fit-content;
-    height:1rem;
 }
 
 .game-img{
-    height:10rem;
-    width:15rem;
+    width:clamp(12rem,30vw,20rem);
     border-radius:12px;
 }
 
 .game-img:hover{
-    outline:2px solid #990;
+    outline:2px solid var(--accent-color);
 }
 
-.games-text{
-    line-height:1.5rem;
+.game-title{
+    font-size:clamp(1.75rem,4vw,2.5rem);
 }
 
-@media (max-width:500px) {
-    .grid-section{
-        flex-direction: column;
-        width:40ch;
-    }
+.game-desc{
+    font-size: clamp(1rem,2.5vw,1.5rem);
 }

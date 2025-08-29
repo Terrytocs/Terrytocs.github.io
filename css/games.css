@@ -1,6 +1,8 @@
 .game-section{
     display:flex;
     gap:1rem;
+    margin:auto;
+    width:clamp(256px,80vw,1000px);
 }
 
 .game-img{

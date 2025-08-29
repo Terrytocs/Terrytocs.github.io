@@ -97,11 +97,11 @@ html{
 
 /*-----HEADER-----*/
 .nav{
-    font-size:12px;
+  font-size:12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding:var(--light2-padding);
+  padding:var(--light2-padding) var(--medium1-padding);
   position:relative;
 }
 
@@ -114,7 +114,7 @@ html{
 
 .logo-svg{
   background-color:var(--primary-color);
-  width:1.75rem;
+  width:1.95rem;
   aspect-ratio:1/1;
   border-radius:50%;
   display:flex;
@@ -125,11 +125,13 @@ html{
 .logo-text{
   fill:var(--secondary-color);
   font-weight:bold;
+  text-anchor:middle;
+  
 }
 
 .col-select{
   background-color: var(--primary-color);
-  width:1.75rem;
+  width:1.95rem;
   aspect-ratio:1/1;
   border-radius:50%;
   display:flex;
@@ -156,7 +158,7 @@ html{
 }
 
 .link{
-  padding:var(--light2-padding);
+  padding:var(--light1-padding) 10px;
   display:flex;
   justify-content: center;
   align-items: center;
@@ -165,7 +167,7 @@ html{
 .highlight{
   background-color:var(--primary-color);
   color:var(--secondary-color);
-  border-radius:var(--border-radius);
+  border-radius:999px;
 }
 
 .highlight:hover{

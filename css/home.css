@@ -1,40 +1,70 @@
 /*-----HOME-----*/
 .websites{
-    background:url(../img/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.jpg) #3c3c3c;
+    background:url(../img/glenn-carstens-peters-npxXWgQ33ZQ-unsplash.jpg);
+    background-color: #3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
     background-position:center;
+    transition: 250ms linear;
+}
+
+.websites:hover{
+    background-color: #5c5c5c;
 }
 
 .videos{
-    background:url(../img/sam-mcghee-KieCLNzKoBo-unsplash.jpg) #3c3c3c;
+    background:url(../img/sam-mcghee-KieCLNzKoBo-unsplash.jpg);
+    background-color:#3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode:multiply;
     background-position:center;
+    transition: 250ms linear;
+}
+
+.videos:hover{
+    background-color: #5c5c5c;
 }
 
 .games{
-    background:url(../img/jeshoots-com-eCktzGjC-iU-unsplash.jpg) #3c3c3c;
+    background:url(../img/jeshoots-com-eCktzGjC-iU-unsplash.jpg);
+    background-color:#3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
     background-position:center;
+    transition: 250ms linear;
+}
+
+.games:hover{
+    background-color: #5c5c5c;
 }
 
 .apps{
-    background:url(../img/kelly-sikkema-3-Tc_5LROrM-unsplash.jpg) #3c3c3c;
+    background:url(../img/kelly-sikkema-3-Tc_5LROrM-unsplash.jpg);
+    background-color:#3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
     background-position:center;
+    transition: 250ms linear;
+}
+
+.apps:hover{
+    background-color: #5c5c5c;
 }
 
 .misc{
-    background:url(../img/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg) #3c3c3c;
+    background:url(../img/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg);
+    background-color:#3c3c3c;
     color:var(--secondary-color);
     background-size:cover;
     background-blend-mode: multiply;
     background-position:center;
+    transition: 250ms linear;
+}
+
+.misc:hover{
+    background-color: #5c5c5c;
 }

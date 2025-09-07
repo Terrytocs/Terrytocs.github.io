@@ -12,7 +12,7 @@
         <header class="header">
         <nav class="nav">
             <section class="logo">
-            <a href="../index.html">
+            <a href="../index1.html">
                 <svg class="logo-svg" id="_logo_svg">
                 <text class="logo-text" x="50%" y="64.5%">&lt;/&gt;</text>
                 </svg>
@@ -35,7 +35,7 @@
             </svg>
             <ul id="_link_list" class="link-list">
                 <li class="link"><a href="../index.html" class="underline">HOME</a></li>
-                <a href="./html/Website/index.html" target="_blank"><li class="link highlight"><p class="underline-alt">CONTACT</p></li></a>
+                <a href="./html/Website/index1.html" target="_blank"><li class="link highlight"><p class="underline-alt">CONTACT</p></li></a>
             </ul>
             </section>
         </nav>
@@ -49,7 +49,7 @@
         <main class="main">
             <form>
                 <section class="section">
-                <fieldset class="fieldset-light">
+                <fieldset>
                     <legend>
                     <h2 class="section-title">Calculated Yearly Interest</h2>
                     </legend>
@@ -84,8 +84,8 @@
                     </div>
                 </fieldset>
                 </section>
-                <section class="section section-dark">
-                <fieldset class="fieldset-dark">
+                <section class="section">
+                <fieldset>
                 <legend>
                 <h2 class="section-title">Compound Interest</h2>
                 </legend>
@@ -146,7 +146,7 @@
                 </fieldset>
                 </section>
                 <section class="section">
-                <fieldset class="fieldset-light">
+                <fieldset>
                     <legend>
                     <h2 class="section-title">Debt After N Months</h2>
                     </legend>
@@ -215,6 +215,66 @@
                     </div>
                 </fieldset>
                 </section>
+                <section class="section">
+                <fieldset>
+                    <legend>
+                    <h2 class="section-title">Estimated Monthly Payment</h2>
+                    </legend>
+                    <div class="interest-grid">
+                    <label class="interest-label medium-text-size">
+                        Initial Amount
+                    </label>
+                    <input 
+                        class="primary-bg input"
+                        type="number"
+                        id="_paymentEstimateInitialAmount"
+                    >
+                    </div>
+                    <div class="interest-grid">
+                    <label class="interest-label medium-text-size">
+                        Interest Amount
+                    </label>
+                    <input 
+                        class="primary-bg input"
+                        type="number"
+                        id="_paymentEstimateInterestAmount"
+                    >
+                    </div>
+                    <div class="interest-grid">
+                    <label class="interest-label medium-text-size">
+                        Number of Years
+                    </label>
+                    <input 
+                        class="primary-bg input"
+                        type="number"
+                        id="_paymentEstimateYears"
+                    >
+                    </div>
+                    <div>
+                    <p class="interest-label medium-text-size">
+                    Pay off debt in <span
+                        id="_paymentEstimateResultYears"
+                    >N</span> years = <span
+                        id="_paymentEstimateResult"
+                    ></span>
+                    </p>
+                    </div>
+                    <div class="enter-clear">
+                    <input 
+                        class="cta-btn btn-light"
+                        type="button" 
+                        value="Enter"
+                        onclick="return calculatePaymentEstimate()"
+                    >
+                    <input 
+                        class="cta-btn btn-light"
+                        type="button"
+                        value="Clear"
+                        onclick="clearPaymentEstimate()"
+                    >
+                    </div>
+                </fieldset>
+                </section>
             </form>
         </main>
     </div>
@@ -222,6 +282,7 @@
     <script src="../js/interest/calculateInterest.js" type="text/javascript" charset="utf-8"></script>
     <script src="../js/interest/compoundInterest.js" type="text/javascript" charset="utf-8"></script>
     <script src="../js/interest/debtNMonths.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/interest/estimatedMonthlyPayment.js" type="text/javascript" charset="utf-8"></script>
     <script src="../js/utils/Enum.js" type="text/javascript" charset="utf-8"></script>
     <script src="../js/utils/SVG.js" type="text/javascript" charset="utf-8"></script>
     <script src="../js/HamBarSVG.js" type="text/javascript" charset="utf-8"></script>

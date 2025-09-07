@@ -397,10 +397,7 @@ html{
   padding:var(--heavy5-padding) var(--medium2-padding);
 }
 
-.section-dark{
-  background-color:var(--primary-color);
-  color: var(--secondary-color);
-}
+
 
 .small-text-size{
   font-size:var(--light2-padding);

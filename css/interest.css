@@ -5,14 +5,6 @@ fieldset{
     margin-inline:auto;
 }
 
-.fieldset-light{
-    border:1px solid var(--primary-color);
-}
-
-.fieldset-dark{
-    border:1px solid var(--secondary-color);
-}
-
 .enter-clear{
     display:flex;
     gap:1rem;
@@ -42,4 +34,44 @@ fieldset{
 .interest-label{
   font-weight:bold;
   line-height: var(--heavy3-padding);
+}
+
+.section:nth-child(even){
+    background-color:var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.section:nth-child(even) input{
+    background-color:var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.section:nth-child(odd){
+    background-color:var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.section:nth-child(odd) input{
+    background-color:var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.section:nth-child(odd) fieldset{
+    border:1px solid var(--primary-color);
+}
+
+input:focus{
+    outline:none;
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge, Opera) */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Removes the extra margin that might remain */
+}
+
+/* For Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

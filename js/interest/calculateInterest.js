@@ -9,9 +9,7 @@ function calculateInterest() {
 }
 
 function clearCalcInterest(){
-    var Q=[];
-    Q[0]=document.getElementById('_calculatedInterestAmount').value;
-    Q[0]="";
+    _calculatedInterestAmount.value="";
 
     var l={};
     l.calculatedInterestResult=document.getElementById('_calculatedInterestResult');

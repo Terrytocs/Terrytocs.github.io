@@ -16,13 +16,9 @@ function calculateCompoundInterest() {
 }
 
 function clearCompInterest(){
-    var Q=[];
-    Q[0]=document.getElementById('_compoundInterestInitialAmount').value;
-    Q[1]=document.getElementById('_compoundInterestInterestAmount').value;
-    Q[2]=document.getElementById('_compoundInterestYears').value;
-    Q[0]="";
-    Q[1]="";
-    Q[2]="";
+    _compoundInterestInitialAmount.value="";
+    _compoundInterestInterestAmount.value="";
+    _compoundInterestYears.value="";
 
     var l={};
     l.compoundInterestResultYears=document.getElementById('_compoundInterestResultYears');

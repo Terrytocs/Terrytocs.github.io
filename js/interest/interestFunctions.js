@@ -34,3 +34,11 @@ function returnDebtAfterNMonths(ia,p,i,y){
   return r;
 }
 
+function returnEstimatedMonthlyPayment(ia,i,y){
+  var r;
+  r=((ia*Math.pow(returnInterestFrom(i,1),y*12))/((Math.pow(returnInterestFrom(i,1),y*12)-1)/(returnInterestFrom(i,1)-1)));
+  r=r.toFixed(2);
+  r=Number(r).toLocaleString();
+  
+  return r;
+}

@@ -15,15 +15,10 @@ function calculateDebtNMonths(param) {
 }
 
 function clearDebtNMonths(){
-    var Q=[];
-    Q[0]=document.getElementById('_debtNMonthsInitialAmount').value;
-    Q[1]=document.getElementById('_debtNMonthsInterestAmount').value;
-    Q[2]=document.getElementById('_debtNMonthsMonthlyPayment').value;
-    Q[3]=document.getElementById('_debtNMonthsMonths').value;
-    Q[0]="";
-    Q[1]="";
-    Q[2]="";
-    Q[3]="";
+    _debtNMonthsInitialAmount.value="";
+    _debtNMonthsInterestAmount.value="";
+    _debtNMonthsMonthlyPayment.value="";
+    _debtNMonthsMonths.value="";
 
     var l={};
     l.debtNMonthsResultMonths=document.getElementById('_debtNMonthsResultMonths');

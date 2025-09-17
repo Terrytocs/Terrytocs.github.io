@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Personal Space</title>
+</head>
+<body>
+	<div class="container" id="_container"></div>
+	<script>
+		("use strict");
+		
+		window.addEventListener("load",main);
+
+		document.body.style=`background-color:black;display:grid;height:100vh;place-items:center;overflow:hidden;`;const canvas=document.createElement("canvas"),ctx=canvas.getContext("2d"),size=372;canvas.height=size;canvas.width=size;_container.append(canvas);
+
+		function main(){
+			setClockNumbers(ctx);
+		};
+
+		function drawCircle(ctx,x,y,r,config={}){
+			const {fill,stroke}=config;ctx.save();Object.assign(ctx,config.opt);ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.closePath();fill&&ctx.fill();stroke&&ctx.stroke();ctx.restore();
+		};
+
+		function drawLine(ctx,s,e,config={}){
+			const {fill,stroke}=config;ctx.save();Object.assign(ctx,config.opt);ctx.lineCap="round";ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(e.x,e.y);stroke&&ctx.stroke();ctx.restore();
+		}
+
+		function drawText(ctx,x,y,t,config={}){
+			const {fill,stroke}=config;ctx.save();Object.assign(ctx,config.opt);fill&&ctx.fillText(t,x,y);stroke&&ctx.strokeText(t,x,y);ctx.restore();
+		};
+
+		function Vector(...vec){
+			[this.x,this.y]=vec;
+			this.mag=()=>{
+				return Math.sqrt(this.x*this.x+this.y*this.y);
+			};
+			this.dir=()=>{
+				return Math.atan2(this.y,this.x);
+			};
+			this.add=(v)=>{
+				return new Vector(this.x+v.x,this.y+v.y);
+			};
+			this.add2=(x,y)=>{
+				return new Vector(this.x+x,this.y+y);
+			};
+			this.sub=(v)=>{
+				return new Vector(this.x-v.x,this.y-v.y);
+			};
+			this.sub2=(x,y)=>{
+				return new Vector(this.x-x,this.y-y);
+			};
+			this.scale=(s)=>{
+				return new Vector(this.x*s,this.y*s);
+			}
+			this.scale2=(x,y)=>{
+				return new Vector(this.x*x,this.y*y);
+			};
+			this.rotate=(c,a)=>{
+				var x,y,r,cos=Math.cos(a),sin=Math.sin(a);x=this.x-c.x;y=this.y-c.y;r=new Vector(x*cos-y*sin,x*sin+y*cos);
+				return c.add(r);
+			};
+			this.lerp=(e,t)=>{
+				return this.add(e.sub(this).scale(t));
+			};
+		};
+
+		const dist=10,{width,height}=ctx.canvas,center=new Vector(width,height).scale(0.5),days=["Sun","Mon","Tue","Wed","Thur","Sat","Sun"];
+		let i,ang,hour,minute,second,millisecond,year,month,day,date;
+
+		function setClockNumbers(ctx){
+			const setClockHours=(ctx,time)=>{
+				i=0;
+				for(ang=0;ang<Math.PI*2;ang+=(Math.PI*2)/24){
+					if(i===24)break;hour=center.sub2(0,center.y-dist*2).rotate(center,ang);if(i===time){drawText(ctx,hour.x,hour.y,i,{stroke:true,opt:{textAlign:"center",textBaseline:"middle",font:"16px Arial",strokeStyle:"#FF0",lineWidth:2}})};drawText(ctx,hour.x,hour.y,i,{fill:true,opt:{textAlign:"center",textBaseline:"middle",font:"16px Arial",fillStyle:"#F00"}});++i;
+					delete hour;
+				}
+			};
+
+			const setClockMinutes=(ctx)=>{
+				i=0;
+				for(ang=0;ang<Math.PI*2;ang+=(Math.PI*2)/60){
+					if(i===60)break;minute=center.sub2(0,center.y-dist*4).rotate(center,ang);if(i%5===0){drawText(ctx,minute.x,minute.y,i,{fill:true,opt:{textAlign:"center",textBaseline:"middle",font:"12px Arial",fillStyle:"#0F0"}})}else{drawLine(ctx,center.sub2(0,center.y-dist*4.25).rotate(center,ang),center.sub2(0,center.y-dist*3.75).rotate(center,ang),{stroke:true,opt:{strokeStyle:"#0F0"}})};++i;delete minute;
+				}
+			};
+
+			const drawClockHands=(ctx)=>{
+				date=new Date(),hour=date.getHours(),minute=date.getMinutes(),second=date.getSeconds(),millisecond=date.getMilliseconds(),month=date.getMonth()+1,day=date.getDate(),year=date.getFullYear();
+				ctx.strokeStyle="#F00";
+				const drawHourHand=()=>{
+					drawLine(ctx,center,center.sub2(0,center.y*0.45).rotate(center,((hour/24*360)+(minute/60*360)/24)*(Math.PI/180)),{stroke:true,opt:{lineWidth:5}});
+				}
+				const drawMinuteHand=()=>{
+					drawLine(ctx,center,center.sub2(0,center.y*0.65).rotate(center,((minute/60*360)+(second/60*360)/60)*(Math.PI/180)),{stroke:true,opt:{lineWidth:3}});
+				}
+				const drawSecondHand=()=>{
+					drawLine(ctx,center,center.sub2(0,center.y*0.72).rotate(center,((second/60*360)+(millisecond/60000*360))*(Math.PI/180)),{stroke:true,});
+				}
+				const drawDate=()=>{
+					drawText(ctx,center.x,center.y+center.y*0.35,days[date.getDay()],{fill:true,opt:{fillStyle:"#F00",textAlign:"center",textBaseline:"middle",font:"16px Arial"}});
+					drawText(ctx,center.x,center.y+center.y*0.5,`${month.toString().padStart(2,"0")} / ${day} / ${year.toString().slice(2,4)}`,{fill:true,opt:{fillStyle:"#F00",textAlign:"center",textBaseline:"middle",font:"16px Arial"}});
+				}
+				drawDate();drawHourHand();drawMinuteHand();drawSecondHand();setClockHours(ctx,hour);delete date;
+			}
+
+			const drawClock=()=>{
+				ctx.clearRect(0,0,width,height);drawCircle(ctx,width/2,height/2,width/2-5,{stroke:true,opt:{strokeStyle:"#00F",lineWidth:3}});setClockMinutes(ctx);drawClockHands(ctx);
+			}
+			
+			window.setInterval(drawClock,1000/60);
+		}
+	</script>
+</body>
+</html>

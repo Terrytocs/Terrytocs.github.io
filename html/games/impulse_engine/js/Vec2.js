@@ -1,6 +1,18 @@
 ("use strict");
 
 export default class Vec2{
+    static getIntersectionTime(a,b,c,d){
+        let ab,dc,ac,det,con,s,t;
+    }
+    static getDistance(a,b){
+        return a.sub(b).mag();
+    }
+    static getAngle(a,b){
+        b.sub(a).dir();
+    }
+    static lerp(s,e,t){
+        return s.add(e.sub(s).scale(t));
+    }
     constructor(x,y){
         this.set(x,y);
     }
@@ -9,8 +21,11 @@ export default class Vec2{
         this.y=y;
         return this;
     }
-    length(){
+    getMag(){
         return Math.sqrt(this.x*this.x+this.y*this.y);
+    }
+    getDir(){
+        return Math.atan2(this.y,this.x);
     }
     add(v){
         return new Vec2(this.x+v.x,this.y+v.y);
@@ -31,10 +46,10 @@ export default class Vec2{
         return new Vec2(this.x*s,this.y*s);
     }
     cross(v){
-        return (this.x*v.y-this.y-v.x);
+        return (this.x*v.y-this.y*v.x);
     }
     normalize(){
-        let len=this.length();
+        let len=this.getMag();
         len=len>0?(1/len):len;
         return new Vec2(this.x,this.y).scale(len);
     }
@@ -47,11 +62,5 @@ export default class Vec2{
             x*Math.sin(a)+y*Math.cos(a)
         );
         return c.add(r);
-    }
-    distance(v){
-        let x,y;
-        x=this.x-v.x;
-        y=this.y-v.y;
-        return Math.sqrt(x*x+y*y);
     }
 }

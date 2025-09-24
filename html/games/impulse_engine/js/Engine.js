@@ -26,9 +26,11 @@ export default class Engine{
         this.prevTime=this.currTime;
         this.lagTime+=this.elapsedTime;
 
+        if(this.elapsedTime>1000)this.elapsedTime=this.frameTime;
+
         while(this.lagTime>=this.MPF){
             (this.lagTime-=this.MPF);
-            this.update();
+            this.update(this.updateInterval);
         }
         this.draw();
     }

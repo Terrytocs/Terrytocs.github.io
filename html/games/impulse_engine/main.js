@@ -17,30 +17,29 @@ class Main{
     }
 
     constructor(id){
-                this.engine=new Engine();
+                this.engine=new Engine(10);
                 this.screen=Main.screen(id);
                 this.game=new Game(this.screen);
                 this.inputHandler=this.handleInput(this.screen);
                 
-                this.engine.update(()=>{
-                    //Physics.collision(this.screen);
-                    this.update(this.screen);
+                this.engine.update((time)=>{
+                    this.update(this.screen,time);
                 });
                 this.engine.draw(()=>{
                     this.draw(this.screen);
-                    Physics.collision(this.screen);//TEMPORARY FOR TESTING
                 });
-                //this.engine.start();
+                this.engine.start()
     }
 
     handleInput(screen){
         const   keydownListener=window.addEventListener("keydown",e=>InputHandler.handleUserInput(e,screen));
     }
-    update(screen){
+    update(screen,time){
+        Physics.collision(screen);
         const   {allObjects}=screen;
         let     i;
         for(i=0;i<allObjects.length;++i){
-                allObjects[i].update();
+                allObjects[i].update(time);
         }
     }
     draw(screen){
@@ -55,6 +54,5 @@ class Main{
     }
 }
 
-const main=new Main("_canvas"),
-load=window.addEventListener("load",e=>main);
-export default main.screen;    
+const   main=new Main("_canvas"),
+        load=window.addEventListener("load",e=>main);

@@ -1,8 +1,8 @@
 ("use strict");
 
-import Vec2             from "./Vec2.js";
 import Rectangle        from "./Rectangle.js";
 import Circle           from "./Circle.js";
+import Vec2             from "./Vec2.js";
 
 export default class InputHandler{
         static objectNum=4;
@@ -22,10 +22,10 @@ export default class InputHandler{
                 const {ctx,width,height,allObjects}=screen;
                 //SPAWN OBJECTS
                 if(keycode===70){//f
-                        const r1=new Rectangle(screen,new Vec2(allObjects[this.objectNum].center.x,allObjects[this.objectNum].center.y),10+Math.random()*30,10+Math.random()*30);
+                        const r1=new Rectangle(screen,new Vec2(allObjects[this.objectNum].center.x,allObjects[this.objectNum].center.y),10+Math.random()*30,10+Math.random()*30,{mass:1,friction:1,restitution:1});
                 }
                 if(keycode===71){//g
-                        const c1=new Circle(screen,new Vec2(allObjects[this.objectNum].center.x,allObjects[this.objectNum].center.y),20+Math.random()*10);
+                        const c1=new Circle(screen,new Vec2(allObjects[this.objectNum].center.x,allObjects[this.objectNum].center.y),20+Math.random()*10,{mass:1,friction:1,restitution:1});
                 }
 
                 //CHANGE SELECTED OBJECT

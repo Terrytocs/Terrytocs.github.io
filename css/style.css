@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --col-000: #000000;
+  --col-100: #201013;
+  --col-200: #270606;
+  --col-300: #471115;
+  --col-400: #53251a;
+  --col-500: #a48c5b;
+  --col-600: #112921;
+  --col-700: #2e3c37;
+  --col-800: #53887f;
+  --col-900: #81a093;
+  --col-110: #0c2b3d;
+  --col-120: #0b3e47;
+  --col-130: #1d494d;
+  --col-140: #2a646b;
+  --col-150: #b5b5b5;
+  --col-FFF: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--col-600) var(--col-100);
+  font-size: 16px;
+}
+
+body {
+  font-family: Inter, Verdana, Helvetica, Geneva, Tahoma, sans-serif;
+  font-size: 1.4em;
+  text-size-adjust: 100%;
+  line-height: 1.6;
+  margin: auto;
+  max-width: 100rem;
+  background-color: var(--col-000);
+  color: var(--col-150);
+}
+
+body::before {
+  content: "Theo's Site";
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.7em;
+  padding-block: 2rem;
+}
+
+.container {
+  background-color: var(--col-200);
+  padding: 1rem;
+}
+
+hr {
+  border: 1px solid var(--col-600);
+}
+
+p {
+  padding-block: 2rem 0.5rem;
+}

@@ -1,0 +1,237 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+  --col-000: #000000;
+  --col-100: #201013;
+  --col-210: hsl(0, 73%, 4%);
+  --col-200: #270606;
+  --col-300: #471115;
+  --col-400: #53251a;
+  --col-500: #a48c5b;
+  --col-600: #112921;
+  --col-700: #2e3c37;
+  --col-800: #53887f;
+  --col-900: #81a093;
+  --col-110: #0c2b3d;
+  --col-120: #0b3e47;
+  --col-130: #1d494d;
+  --col-140: #2a646b;
+  --col-150: #b5b5b5;
+  --col-333: #777777;
+  --col-FFF: #ffffff;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+}
+
+/* HTML */
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-color: var(--col-600) var(--col-100);
+}
+
+/* BODY */
+
+body {
+  font-family: Inter, Verdana, Helvetica, Geneva, Tahoma, sans-serif;
+  background-color: var(--col-000);
+  color: var(--col-150);
+  font-size: 16px;
+  line-height: 1cm;
+  margin-inline: auto;
+  max-width: 30cm;
+}
+
+body::before {
+  content: "Theo's Site";
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1cm;
+  padding-block: 1cm;
+}
+
+/* NAVIGATIOIN */
+
+.main-nav {
+  background-color: var(--col-110);
+  border-bottom: 1px solid var(--col-150);
+  padding: 0.1cm clamp(1cm, 4vw, 2cm);
+  position: sticky;
+  top: 0;
+}
+
+.main-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main-nav li {
+  list-style-type: none;
+}
+
+.main-nav a {
+  color: var(--col-150);
+  text-decoration: none;
+}
+
+.main-nav a[data-active] {
+  color: var(--col-500);
+  text-decoration: underline;
+}
+
+/* MARQUEE */
+
+.banner marquee {
+  display: block;
+  background-color: var(--col-400);
+  color: var(--col-333);
+  height: fit-content;
+}
+
+.banner marquee span {
+  display: inline-block;
+  margin-right: 1cm;
+}
+
+/* CONTAINER */
+
+.container {
+  background-color: var(--col-200);
+  padding: 1rem clamp(1cm, 4vw, 2cm);
+  min-height: 100vh;
+}
+
+.main-nav a:hover {
+  text-decoration: underline;
+}
+
+/* HEADING */
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5cm;
+}
+
+.heading h1 {
+  font-size: clamp(1rem, 4vw, 2rem);
+}
+
+hr {
+  border: 1px solid var(--col-600);
+}
+
+/* PARAGRAPHS */
+
+.paragraph {
+  padding-top: 0.5cm;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5cm;
+}
+
+.first-paragraph::first-letter {
+  font-size: 2rem;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.controls.table td {
+  width: 8rem;
+}
+
+.section-title {
+  font-size: 1.5rem;
+}
+
+.section-info-block {
+  display: inline-block;
+  padding-block: 1rem;
+}
+
+.section-text {
+  line-height: 1.25cm;
+}
+
+.courtesy-sub {
+  display: block;
+  text-align: right;
+}
+/* LINKS */
+
+.link,
+.nav-link {
+  color: var(--col-150);
+}
+
+.nav-link,
+.link.hover {
+  text-decoration: none;
+}
+
+.nav-link:hover,
+.link.hover:hover {
+  text-decoration: underline;
+}
+
+/* IMG */
+
+.img {
+  height: 5cm;
+}
+
+.img.highlight {
+  height: 7cm;
+  padding-right: 1rem;
+}
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-center {
+  display: block;
+  margin: 2cm auto;
+}
+
+.flip {
+  transform: scaleX(-1);
+}
+
+/* CANVAS */
+
+.iframe-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.canvas-iframe.letter-box {
+  aspect-ratio: 4/3;
+}
+
+/* FOOTER */
+.footer {
+  border-top: 3px solid var(--col-400);
+  padding: 2cm clamp(1cm, 4vw, 2cm);
+  background-color: var(--col-210);
+  display: grid;
+  place-items: center;
+  color: var(--col-500);
+}

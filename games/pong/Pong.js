@@ -13,13 +13,14 @@ class Pong {
     const states = {
       START_SCREEN: "start-screen",
       TRANSITION: "transition",
+      COUNTDOWN: "countdown",
       GAME_SCREEN: "game-screen",
       PAUSE: "pause",
       RESET: "reset",
       WIN: "win",
     };
     const game = {
-      state: states.GAME_SCREEN,
+      state: states.START_SCREEN,
       paused: false,
     };
     const inputHandler = new InputHandler(canvas, {
@@ -43,17 +44,51 @@ class Pong {
     const updateTitle = this.#_updateTitle(title, alpha, alphaOffset);
     title[3].hover = false;
 
+    alpha = 0;
     title_screen_cam.add(...title);
-    title_screen.update((t) => {});
+    title_screen.update(function (t) {
+      if (game.state === states.TRANSITION) {
+        this.translate(new Vec(Linear.lerp(0, -width, t), 0));
+      }
+      if (this.pos.x <= -width) game.state = states.COUNTDOWN;
+    });
+
+    // COUNTDOWN SCREEN
+    const countdown_screen = new Scene(new Vec(0));
+    const cd_screen_cam = countdown_screen.camera;
+
+    const cd_screen = this.#_setupCDScreen(center);
+    const updateCDScreen = this.#_updateCDScreen(
+      cd_screen,
+      alpha,
+      game,
+      states
+    );
+
+    cd_screen_cam.add(...cd_screen);
+
+    // PAUSE SCREEN
+    const pause_screen = new Scene(new Vec(0));
+    const pause_screen_cam = pause_screen.camera;
+
+    const p_screen = this.#_setupPScreen(center);
+
+    pause_screen_cam.add(...p_screen);
 
     // GAME SCREEN
     const game_screen = new Scene(new Vec(0));
     const game_screen_cam = game_screen.camera;
 
     const scores = [0, 0];
-    const players = [true, true];
+    const players = [true, false];
     const game_info = this.#_setupGameInfo(center, players, scores);
-    const updateGameInfo = this.#_updateGameInfo(game_info, scores, players);
+    const updateGameInfo = this.#_updateGameInfo(
+      game_info,
+      scores,
+      players,
+      game,
+      states
+    );
 
     const game_bounds = this.#_setupGameBounds(width, height, center);
     const court_lines = this.#_setupCourtLines(center);
@@ -89,6 +124,17 @@ class Pong {
       ball
     );
 
+    // WIN SCREEN
+    const win_scene = new Scene(new Vec(0));
+    const win_scene_camera = win_scene.camera;
+
+    const win_screen = this.#_setupWinScreen(center, scores);
+    const updateWinScreen = this.#_updateWinScreen(win_screen, game, states);
+    win_scene_camera.add(...win_screen);
+
+    // RESET
+    const updateReset = this.#_updateReset(center, paddles, game, states);
+
     // MOUSE UPDATES
     inputHandler.updateMousemove(() => {
       if (
@@ -97,25 +143,58 @@ class Pong {
         mouse.pos[1] > title[3].faces[0].y &&
         mouse.pos[1] < title[3].faces[2].y
       ) {
+        canvas.style.cursor = "pointer";
         title[3].hover = true;
       } else {
+        canvas.style.cursor = "default";
         title[3].hover = false;
+      }
+    });
+    inputHandler.updateClick(() => {
+      if (title[3].hover) {
+        game.state = states.TRANSITION;
+        canvas.style.cursor = "default";
       }
     });
 
     // KEYBOARD UPDATES
     inputHandler.updateKeydown(() => {
-      console.log(keys[0]);
-      if (keys[0] === "1") players[0] = !players[0];
-      if (keys[0] === "2") players[1] = !players[1];
+      if (game.state === states.GAME_SCREEN) {
+        if (keys[0] === "1") players[0] = !players[0];
+        if (keys[0] === "2") players[1] = !players[1];
+      }
+      if (keys[0] === "p") {
+        if (game.state === states.GAME_SCREEN || game.state === states.PAUSE)
+          game.paused = !game.paused;
+        if (game.paused) game.state = states.PAUSE;
+        else game.state = states.GAME_SCREEN;
+      }
     });
 
     // ENGINE
     engine.update((t) => {
-      updateTitle(t);
-      updatePaddles(t);
-      updateBall(t);
-      updateGameInfo(t);
+      switch (game.state) {
+        case states.START_SCREEN:
+          updateTitle(t);
+          break;
+        case states.TRANSITION:
+          title_screen.update(t);
+          break;
+        case states.COUNTDOWN:
+          updateCDScreen(t);
+          break;
+        case states.GAME_SCREEN:
+          updatePaddles(t);
+          updateBall(t);
+          updateGameInfo(t);
+          break;
+        case states.WIN:
+          updateWinScreen(t, scores);
+          break;
+        case states.RESET:
+          updateReset(t, scores);
+          break;
+      }
     });
     engine.draw(() => {
       ctx.clearRect(0, 0, width, height);
@@ -127,12 +206,81 @@ class Pong {
           game_screen_cam.drawChildren(ctx);
           title_screen_cam.drawChildren(ctx);
           break;
+        case states.COUNTDOWN:
+          game_screen_cam.drawChildren(ctx);
+          cd_screen_cam.drawChildren(ctx);
+          break;
         case states.GAME_SCREEN:
           game_screen_cam.drawChildren(ctx);
+          break;
+        case states.PAUSE:
+          game_screen_cam.drawChildren(ctx);
+          pause_screen_cam.drawChildren(ctx);
+          break;
+        case states.WIN:
+          game_screen_cam.drawChildren(ctx);
+          win_scene_camera.drawChildren(ctx);
           break;
       }
     });
     engine.start();
+  }
+  #_updateReset(center, paddles, game, states) {
+    return function (t, scores) {
+      for (let i = 0; i < paddles.length; ++i) {
+        scores[i] = 0;
+        paddles[i].pos.y = center.y;
+      }
+      game.state = states.COUNTDOWN;
+    };
+  }
+  #_setupWinScreen(center, scores) {
+    return [
+      new Rectangle(
+        center,
+        { size: center },
+        {
+          display: { fill: true, stroke: true },
+          props: { fillStyle: "#000E", strokeStyle: "#FFF", lineWidth: 10 },
+        }
+      ),
+      new Text(
+        center,
+        {
+          text: `${
+            scores[0] === 100
+              ? "Player 1 Wins"
+              : scores[1] === 100
+              ? "Player 2 Wins"
+              : ""
+          }`,
+        },
+        {
+          display: { fill: true },
+          props: { fillStyle: "#FFF", font: "64px monospace" },
+        }
+      ),
+    ];
+  }
+  #_updateWinScreen(win_screen, game, states) {
+    let alpha = 0;
+    return function (t, scores) {
+      win_screen[1].update(function () {
+        this.props.text = `${
+          scores[0] === 100
+            ? "Player 1 Wins"
+            : scores[1] === 100
+            ? "Player 2 Wins"
+            : ""
+        }`;
+      });
+
+      alpha += t;
+      if (alpha >= 1) {
+        alpha = 0;
+        game.state = states.RESET;
+      }
+    };
   }
   #_setupTitle(center, width, height) {
     const catchFrases = [
@@ -237,6 +385,79 @@ class Pong {
       });
     };
   }
+  #_setupCDScreen(center) {
+    return [
+      new Rectangle(
+        center,
+        { size: center.scale(0.75) },
+        {
+          display: { fill: true, stroke: true },
+          props: { fillStyle: "#000e", strokeStyle: "#FFF", lineWidth: 10 },
+        }
+      ),
+      new Text(
+        center.scale2(1, 0.75),
+        { text: "Game Start" },
+        {
+          display: { fill: true },
+          props: { fillStyle: "#FFF", font: "24px monospace" },
+        }
+      ),
+      new Text(
+        center,
+        { text: "In" },
+        {
+          display: { fill: true },
+          props: { fillStyle: "#FFF", font: "24px monospace" },
+        }
+      ),
+      new Text(
+        center.scale2(1, 1.25),
+        { text: "3" },
+        {
+          display: { fill: true },
+          props: { fillStyle: "#FFF", font: "48px monospace" },
+        }
+      ),
+    ];
+  }
+  #_updateCDScreen(cd_screen, alpha, game, states) {
+    let num = 3;
+    return function (t) {
+      cd_screen[cd_screen.length - 1].update(function () {
+        this.props.text = `${num}`;
+        alpha += t;
+        if (Math.floor(alpha) >= 2) {
+          alpha = 0;
+          num = num <= 0 ? 0 : num - 1;
+          if (num === 0) {
+            num = 3;
+            game.state = states.GAME_SCREEN;
+          }
+        }
+      });
+    };
+  }
+  #_setupPScreen(center) {
+    return [
+      new Rectangle(
+        center,
+        { size: center.scale(0.5) },
+        {
+          display: { fill: true, stroke: true },
+          props: { fillStyle: "#000e", strokeStyle: "#FFF", lineWidth: 10 },
+        }
+      ),
+      new Text(
+        center,
+        { text: "Paused" },
+        {
+          display: { fill: true },
+          props: { fillStyle: "#FFF", font: "64px monospace" },
+        }
+      ),
+    ];
+  }
   #_setupGameInfo(center, players, scores) {
     const game_info = [
       new Text(
@@ -274,8 +495,9 @@ class Pong {
     ];
     return game_info;
   }
-  #_updateGameInfo(game_info, scores, players) {
+  #_updateGameInfo(game_info, scores, players, game, states) {
     return function (t) {
+      if (scores[0] === 100 || scores[1] === 100) game.state = states.WIN;
       game_info[0].update(function () {
         this.props.text = `Player 1 score: ${scores[0]}`;
       });
@@ -428,7 +650,7 @@ class Pong {
     ];
     ball.init = function () {
       this.pos = center;
-      this.vel = Vec.polar(dirs[Math.floor(Math.random() * dirs.length)], 200);
+      this.vel = Vec.polar(dirs[Math.floor(Math.random() * dirs.length)], 800);
     };
     ball.init();
     return function (t) {
@@ -453,16 +675,16 @@ class Pong {
           this.faces[2].y >= paddles[0].faces[0].y &&
           this.faces[0].y <= paddles[0].faces[2].y
         )
-          this.vel.x =
-            Math.abs(this.vel.x) < 300 ? this.vel.x * -1.2 : this.vel.x * -1;
+          this.vel.x *= -1;
+
         if (
           this.faces[1].x >= paddles[1].faces[3].x &&
           this.faces[1].x <= paddles[1].faces[1].x &&
           this.faces[2].y >= paddles[1].faces[0].y &&
           this.faces[0].y <= paddles[1].faces[2].y
         )
-          this.vel.x =
-            Math.abs(this.vel.x) < 300 ? this.vel.x * -1.2 : this.vel.x * -1;
+          this.vel.x *= -1;
+
         this.translate(this.vel.scale(t));
       });
     };

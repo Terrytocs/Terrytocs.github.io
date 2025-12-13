@@ -1,9 +1,8 @@
 ("use strict");
 
-import Canvas from "../../js/utils/Canvas.js";
 import { Scene, Circle, Text, Line } from "../../js/2d/Sprite.js";
-import Vec from "../../js/math/Vec.js";
-import Engine from "../../js/engine/Engine.js";
+import { Vec } from "../../js/math/Maths.js";
+import { Canvas, Engine } from "../../js/utility/Utils.js";
 
 class Clock {
   constructor(id) {

@@ -64,7 +64,7 @@ export class Vec {
     ab = b.sub(a);
     dc = c.sub(d);
     ac = c.sub(a);
-    det = ab.y * dc.x - ab.x - dc.y;
+    det = ab.y * dc.x - ab.x * dc.y;
     if (det === 0) return null;
     con = ab.y * ac.x - ab.x * ac.y;
     s = con / det;

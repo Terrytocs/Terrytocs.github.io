@@ -9,7 +9,7 @@ class BibleVerse {
     const xhr = new XMLHttpRequest();
     xhr.open(
       "GET",
-      "https://proxy.corsfix.com/?https://bible-api.com/data/kjv/random",
+      "https://bible-api.com/data/kjv/random",
       true
     );
     xhr.responseType = "text";
@@ -39,7 +39,7 @@ class AnimeNews {
     const anime_list_xhr = new XMLHttpRequest();
     anime_list_xhr.open(
       "GET",
-      "https://proxy.corsfix.com/?https://cdn.animenewsnetwork.com/encyclopedia/reports.xml?type=anime&id=155&nskip=0&nlist=all"
+      "https://cdn.animenewsnetwork.com/encyclopedia/reports.xml?type=anime&id=155&nskip=0&nlist=all"
     );
     anime_list_xhr.responseType = "text";
     anime_list_xhr.addEventListener("load", () => {
@@ -55,7 +55,7 @@ class AnimeNews {
           anime_id_list[Math.floor(anime_id_list.length * Math.random())];
         anime_xhr.open(
           "GET",
-          `https://proxy.corsfix.com/?https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=${anime_id}`
+          `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=${anime_id}`
         );
         anime_xhr.responseType = "text";
         anime_xhr.addEventListener("load", () => {

@@ -17,6 +17,7 @@ class Sprite {
     this.type = this.constructor.name.toLowerCase();
 
     this._rotation = 0;
+    this._scale = [1, 1];
     this._layer = 0;
     this._currentFrame = 0;
     this.frames = [];
@@ -30,11 +31,12 @@ class Sprite {
     this.loop = true;
     this.playing = false;
     this._draggable = undefined;
-    this._canCollide = false;
-    this._interactive = false;
+    this.canCollide = false;
+    this.isVisible = true;
   }
+
   boundTest(a, b) {
-    if (!this.canCollide) return null;
+    if (!this.canCollide) return false;
     const radSum = a.boundRadius + b.boundRadius;
     const dist = a.pos.sub(b.pos).mag;
     if (dist > radSum) return false;
@@ -71,7 +73,9 @@ class Sprite {
     spritesToRemove.forEach((sprite) => this.removeChild(sprite));
   }
   drawChildren(ctx) {
-    for (let child of this.children) child.draw(ctx);
+    for (let child of this.children) {
+      if (child.isVisible) child.draw(ctx);
+    }
   }
   updateChildren(t) {
     for (let child of this.children) child.update(t);
@@ -98,18 +102,7 @@ class Sprite {
   get currentFrame() {
     return this._currentFrame;
   }
-  get canCollide() {
-    return this._canCollide;
-  }
-  set canCollide(v) {
-    this._canCollide = v;
-    if (v === false && collisionArr.includes(this)) {
-      collisionArr.splice(collisionArr.indexOf(this), 1);
-    }
-    if (v === true && !collisionArr.includes(this)) {
-      collisionArr.push(this);
-    }
-  }
+
   translate(v) {
     if (this.children.length > 0) {
       for (let child of this.children) {
@@ -193,6 +186,14 @@ export class Rectangle extends Sprite {
     this._faces = this.#_getFaces(this.pos, this._vertices);
     this._faceNormals = this.#_getFaceNormals(this._faces);
   }
+  contains(pos) {
+    return (
+      pos.y >= this._faces[0].y &&
+      pos.x <= this._faces[1].x &&
+      pos.y <= this._faces[2].y &&
+      pos.x >= this._faces[3].x
+    );
+  }
   get vertices() {
     return this._vertices;
   }
@@ -213,10 +214,46 @@ export class Rectangle extends Sprite {
     this._faces = this.#_getFaces(this.pos, this._vertices);
     this._faceNormals = this.#_getFaceNormals(this._faces);
   }
+  rotate(a) {
+    this._rotation += a;
+    if (this.children.length > 0) {
+      for (let child of this.children) {
+        child.rotate(a);
+      }
+    }
+    this._vertices = this.#_getVertices(this.pos, this.size, this._rotation);
+    this._faces = this.#_getFaces(this.pos, this._vertices);
+    this._faceNormals = this.#_getFaceNormals(this._faces);
+  }
+  scale(s) {
+    this._scale = [s, s];
+    if (this.children.length > 0) {
+      for (let child of this.children) {
+        child.scale(s);
+      }
+    }
+    this.size.scale(s);
+    this._vertices = this.#_getVertices(this.pos, this.size, this._rotation);
+    this._faces = this.#_getFaces(this.pos, this._vertices);
+    this._faceNormals = this.#_getFaceNormals(this._faces);
+  }
+  scale2(s1, s2) {
+    this._scale = [s1, s2];
+    if (this.children.length > 0) {
+      for (let child of this.children) {
+        child.scale2(s1, s2);
+      }
+    }
+    this.size.scale2(s1, s2);
+    this._vertices = this.#_getVertices(this.pos, this.size, this._rotation);
+    this._faces = this.#_getFaces(this.pos, this._vertices);
+    this._faceNormals = this.#_getFaceNormals(this._faces);
+  }
   draw(ctx) {
     new Draw(ctx, "rect", this.size.scale(-0.5), this.props, {
       display: {
         translate: [this.pos.x, this.pos.y],
+        rotate: this._rotation,
         ...this.config.display,
       },
       props: {

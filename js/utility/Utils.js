@@ -24,6 +24,8 @@ export class InputHandler {
       pos: null,
       left_click: false,
       right_click: false,
+      left_mouse_down: false,
+      right_mouse_down: false,
     };
     this.addEventListeners(canvas);
   }
@@ -31,6 +33,7 @@ export class InputHandler {
     canvas.addEventListener("mousedown", (e) => this.handleMouseDown(e));
     canvas.addEventListener("mouseup", (e) => this.handleMouseUp(e));
     canvas.addEventListener("mousemove", (e) => this.handleMousemove(e));
+    canvas.addEventListener("click", (e) => this.handleClick(e));
     canvas.addEventListener("contextmenu", (e) => e.preventDefault());
 
     window.addEventListener("keydown", (e) => this.handleKeydown(e));
@@ -62,18 +65,26 @@ export class InputHandler {
 
     if (this.updateMousemove) this.updateMousemove();
   }
+  updateClick(f = (config = {}) => {}) {
+    this.updateClick = f;
+  }
+  handleClick(e) {
+    if (e.button === 0) {
+      if (this.updateClick) this.updateClick();
+    }
+  }
   updateMousedown(f = (config = {}) => {}) {
     this.updateMousedown = f;
   }
   handleMouseDown(e) {
     this.mouse.pos = this.#_getMousePos(e);
 
-    if (e.button === 0) this.mouse.left_click = true;
-    if (e.button === 2) this.mouse.right_click = true;
+    if (e.button === 0) this.mouse.left_mouse_down = true;
+    if (e.button === 2) this.mouse.right_mouse_down = true;
   }
   handleMouseUp(e) {
-    if (e.button === 0) this.mouse.left_click = false;
-    if (e.button === 2) this.mouse.right_click = false;
+    if (e.button === 0) this.mouse.left_mouse_down = false;
+    if (e.button === 2) this.mouse.right_mouse_down = false;
   }
 
   updateKeydown(f = (config = {}) => {}) {

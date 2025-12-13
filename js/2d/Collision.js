@@ -1,6 +1,6 @@
 ("use strict");
 
-import Vec from "../math/Vec.js";
+import { Vec } from "../math/Maths.js";
 
 export class CollisionInfo {
   constructor() {
@@ -31,9 +31,11 @@ export class CollisionInfo {
 }
 
 export class CollisionChecker {
-  constructor() {}
+  constructor() {
+    this.collisionArr = [];
+  }
   update(f = c > {}) {
     this.update = f;
   }
-  collisions(collisionArr) {}
+  collisions() {}
 }

@@ -57,7 +57,7 @@ class AnimeNews {
             anime_title.innerText = title[0];
             anime_alt_title.innerText = altTitle ? altTitle[0] : "Alternate title unavailable";
             anime_rating.innerText = rating ? parseFloat(rating[0]).toPrecision(2) : "Rating unavailable";
-            anime_synopsis.innerHTML = `${synopsis ? synopsis[0] : "Summary unavailable"}<sub class="courtesy-sub">Courtesy of <a class="link" href="animenewsnetwork.com">animenewsnetwork.com</a></sub>`;
+            anime_synopsis.innerHTML = `${synopsis ? synopsis[0] : "Summary unavailable"}<sub class="courtesy-sub">Courtesy of <a class="link" href="https://animenewsnetwork.com">animenewsnetwork.com</a></sub>`;
             console.log(title, altTitle, rating, synopsis);
           } else {
             anime_xhr.send();

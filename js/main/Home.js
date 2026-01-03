@@ -7,11 +7,7 @@ class BibleVerse {
     const verse_container = document.getElementById(verseID);
     const text_container = document.getElementById(textID);
     const xhr = new XMLHttpRequest();
-    xhr.open(
-      "GET",
-      "https://bible-api.com/data/kjv/random",
-      true
-    );
+    xhr.open("GET", "https://bible-api.com/data/kjv/random", true);
     xhr.responseType = "text";
     xhr.addEventListener("load", () => {
       if (xhr.status === 200) {
@@ -37,56 +33,31 @@ class AnimeNews {
     const anime_rating = document.getElementById(ratingId);
     const anime_synopsis = document.getElementById(synopsisId);
     const anime_list_xhr = new XMLHttpRequest();
-    anime_list_xhr.open(
-      "GET",
-      "https://cdn.animenewsnetwork.com/encyclopedia/reports.xml?type=anime&id=155&nskip=0&nlist=all"
-    );
+    anime_list_xhr.open("GET", "https://proxy.cors.sh/https://cdn.animenewsnetwork.com/encyclopedia/reports.xml?type=anime&id=155&nskip=0&nlist=all");
+    anime_list_xhr.setRequestHeader("x-cors-api-key", "temp_573b826a0a1640d95cccbf53cea4236e");
     anime_list_xhr.responseType = "text";
     anime_list_xhr.addEventListener("load", () => {
       if (anime_list_xhr.status === 200) {
-        const anime_id_list = [
-          ...anime_list_xhr.responseText
-            .matchAll(/(?<=<id>).*<\/id>/g)
-            .reduce((a, b) => a.concat(b)),
-        ].map((id) => id.split("<").shift());
+        const anime_id_list = [...anime_list_xhr.responseText.matchAll(/(?<=<id>).*<\/id>/g).reduce((a, b) => a.concat(b))].map((id) => id.split("<").shift());
 
         const anime_xhr = new XMLHttpRequest();
-        const anime_id =
-          anime_id_list[Math.floor(anime_id_list.length * Math.random())];
-        anime_xhr.open(
-          "GET",
-          `https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=${anime_id}`
-        );
+        const anime_id = anime_id_list[Math.floor(anime_id_list.length * Math.random())];
+        anime_xhr.open("GET", `https://proxy.cors.sh/https://cdn.animenewsnetwork.com/encyclopedia/api.xml?anime=${anime_id}`);
+        anime_xhr.setRequestHeader("x-cors-api-key", "temp_573b826a0a1640d95cccbf53cea4236e");
         anime_xhr.responseType = "text";
         anime_xhr.addEventListener("load", () => {
           if (anime_xhr.status === 200) {
             console.log(anime_xhr.responseText);
-            const img_src = anime_xhr.responseText.match(
-              /(?<=img src=").*?\.jpg/
-            );
-            const title = anime_xhr.responseText.match(
-              /(?<=type="Main title" lang=".*?">).*?(?=<)/
-            );
-            const altTitle = anime_xhr.responseText.match(
-              /(?<=type="Alternative title" lang=".*?">).*?(?=<)/
-            );
-            const rating = anime_xhr.responseText.match(
-              /(?<=<ratings .*? weighted_score=").*?(?=")/
-            );
-            const synopsis = anime_xhr.responseText.match(
-              /(?<=type="Plot Summary">).*?(?=<)/
-            );
+            const img_src = anime_xhr.responseText.match(/(?<=img src=").*?\.jpg/);
+            const title = anime_xhr.responseText.match(/(?<=type="Main title" lang=".*?">).*?(?=<)/);
+            const altTitle = anime_xhr.responseText.match(/(?<=type="Alternative title" lang=".*?">).*?(?=<)/);
+            const rating = anime_xhr.responseText.match(/(?<=<ratings .*? weighted_score=").*?(?=")/);
+            const synopsis = anime_xhr.responseText.match(/(?<=type="Plot Summary">).*?(?=<)/);
             anime_image.src = img_src[0];
             anime_title.innerText = title[0];
-            anime_alt_title.innerText = altTitle
-              ? altTitle[0]
-              : "Alternate title unavailable";
-            anime_rating.innerText = rating
-              ? parseFloat(rating[0]).toPrecision(2)
-              : "Rating unavailable";
-            anime_synopsis.innerHTML = `${
-              synopsis ? synopsis[0] : "Summary unavailable"
-            }<sub class="courtesy-sub">Courtesy of <a class="link" href="animenewsnetwork.com">animenewsnetwork.com</a></sub>`;
+            anime_alt_title.innerText = altTitle ? altTitle[0] : "Alternate title unavailable";
+            anime_rating.innerText = rating ? parseFloat(rating[0]).toPrecision(2) : "Rating unavailable";
+            anime_synopsis.innerHTML = `${synopsis ? synopsis[0] : "Summary unavailable"}<sub class="courtesy-sub">Courtesy of <a class="link" href="animenewsnetwork.com">animenewsnetwork.com</a></sub>`;
             console.log(title, altTitle, rating, synopsis);
           } else {
             anime_xhr.send();
@@ -102,17 +73,6 @@ class AnimeNews {
 }
 
 window.addEventListener("load", () => {
-  new BibleVerse(
-    "_bible_book",
-    "_bible_chapter",
-    "_bible_verse",
-    "_bible_text"
-  );
-  new AnimeNews(
-    "_anime_img",
-    "_anime_title",
-    "_anime_title_alt",
-    "_anime_rating",
-    "_anime_synopsis"
-  );
+  new BibleVerse("_bible_book", "_bible_chapter", "_bible_verse", "_bible_text");
+  new AnimeNews("_anime_img", "_anime_title", "_anime_title_alt", "_anime_rating", "_anime_synopsis");
 });

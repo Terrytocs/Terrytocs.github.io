@@ -45,7 +45,8 @@ body {
   font-size: 16px;
   line-height: 1cm;
   margin-inline: auto;
-  max-width: 30cm;
+  max-width: 25cm;
+  overflow-x: hidden;
 }
 
 body::before {
@@ -65,12 +66,78 @@ body::before {
   padding: 0.1cm clamp(1cm, 4vw, 2cm);
   position: sticky;
   top: 0;
+  z-index: 1;
+}
+
+.hambar {
+  height: 1.25rem;
+  width: 1.75rem;
+  position: relative;
+  background-color: #0000;
+  border: none;
+  cursor: pointer;
+}
+
+.hambar :nth-child(1) {
+  position: absolute;
+  height: 3px;
+  width: 1.75rem;
+  top: 0;
+  left: 0;
+  background-color: var(--col-150);
+  transition: 200ms linear;
+}
+
+.hambar :nth-child(2) {
+  position: absolute;
+  height: 3px;
+  width: 1.75rem;
+  top: 50%;
+  left: 0;
+  background-color: var(--col-150);
+  transition: 200ms linear;
+}
+
+.hambar :nth-child(3) {
+  position: absolute;
+  height: 3px;
+  width: 1.75rem;
+  top: calc(100%);
+  left: 0;
+  background-color: var(--col-150);
+  transition: 200ms linear;
+}
+
+.hambar.active :nth-child(1) {
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.hambar.active :nth-child(2) {
+  background-color: #0000;
+}
+
+.hambar.active :nth-child(3) {
+  top: 50%;
+  transform: rotate(-45deg);
 }
 
 .main-nav ul {
+  padding: 0.1cm clamp(1cm, 4vw, 2cm);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 1rem;
+  position: absolute;
+  top: 100%;
+  left: -100vw;
+  background-color: inherit;
+  width: 100%;
+  transition: 200ms linear;
+  border-top: 1px solid var(--col-150);
+}
+
+.hambar.active + ul {
+  left: 0;
 }
 
 .main-nav li {
@@ -87,6 +154,21 @@ body::before {
   text-decoration: underline;
 }
 
+@media (min-width: 600px) {
+  .hambar {
+    display: none;
+  }
+  .main-nav ul {
+    border: none;
+    padding: 0;
+    position: relative;
+    left: 0;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
 /* MARQUEE */
 
 .banner marquee {
@@ -94,11 +176,13 @@ body::before {
   background-color: var(--col-400);
   color: var(--col-333);
   height: fit-content;
+  z-index: -1;
 }
 
 .banner marquee span {
   display: inline-block;
   margin-right: 1cm;
+  z-index: -1;
 }
 
 /* CONTAINER */
@@ -190,6 +274,7 @@ hr {
 
 .img {
   height: 5cm;
+  max-width: 100%;
 }
 
 .img.highlight {
@@ -234,4 +319,5 @@ hr {
   display: grid;
   place-items: center;
   color: var(--col-500);
+  text-align: center;
 }
